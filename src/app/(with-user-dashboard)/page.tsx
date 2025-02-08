@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div>
       <h1>Body</h1>
-      <button className="btn btn-primary">Check Button</button>
+      <button className="btn btn-primary text-white">Check Button</button>
       <h1 className="text-4xl text-center">Check Text</h1>
       <p className="mt-10">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit ratione
