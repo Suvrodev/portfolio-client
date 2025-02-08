@@ -4,6 +4,7 @@ import "./BannerText.css";
 
 // import bounceImage from "@/Images/Banner/down-chevron.svg";
 import bounceImage from "@/assets/Banner/down-chevron.svg";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 const Banner = () => {
@@ -88,7 +89,13 @@ const Banner = () => {
           {/* <div className="relative"> */}
           <div className="arrow ">
             {/* <Link to="contact" smooth={true}> */}
-            <img src={bounceImage} alt="" className="arrowImage" />
+            <Image
+              src={bounceImage}
+              alt="Arrow Image"
+              width={50}
+              height={50}
+              className="arrowImage"
+            />
             {/* </Link> */}
           </div>
           {/* </div> */}
