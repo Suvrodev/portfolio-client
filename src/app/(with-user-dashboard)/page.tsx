@@ -1,6 +1,7 @@
 import "./page.css";
 import AboutMe from "@/components/AboutMe/AboutMe";
 import Banner from "@/components/Banner/Banner";
+import Education from "@/components/Education/Education";
 import Experience from "@/components/Experience/Experience";
 import MyService from "@/components/MyService/MyService/MyService";
 import Project from "@/components/Project/Project/Project";
@@ -32,6 +33,9 @@ export default function Home() {
       </div>
       <div className="px-5 md:px-36 py-10 aboutmeBgColor" id="project">
         <Project />
+      </div>
+      <div className="px-5 md:px-36 py-10 sColor" id="education">
+        <Education />
       </div>
     </div>
   );

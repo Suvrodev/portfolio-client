@@ -9,3 +9,8 @@ export type TSkill = {
   title: string;
   image: string;
 };
+export type TEducation = {
+  year: string;
+  institute: string;
+  topic: string;
+};
