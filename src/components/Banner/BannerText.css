@@ -1,0 +1,81 @@
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.4;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heading-primary-main {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  margin-bottom: 1rem;
+}
+
+.animate-text {
+  background: linear-gradient(
+    to left,
+    rgb(0, 224, 255) 0%,
+    rgb(250, 0, 255) 33%,
+    rgb(0, 224, 255) 66%,
+    rgb(250, 0, 255) 100%
+  );
+  color: transparent;
+  background-repeat: repeat;
+  background-size: auto;
+  background-clip: border-box;
+  background-repeat: repeat-x;
+  background-size: 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-family: Pacifico !important;
+  font-weight: 700;
+  text-transform: capitalize;
+  animation: K4qPF 12s linear infinite;
+  -webkit-animation: K4qPF 12s linear infinite;
+  font-size: 60px;
+  margin-left: 20px;
+  font-family: "Edu VIC WA NT Beginner", sans-serif !important;
+}
+
+.heading-primary-sub {
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: capitalize;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+@keyframes K4qPF {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 12% 100%;
+    background-position-x: 12%;
+    background-position-y: 100%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .heading-primary-main {
+    font-size: 30px;
+  }
+
+  .animate-text {
+    font-size: 30px;
+  }
+}
