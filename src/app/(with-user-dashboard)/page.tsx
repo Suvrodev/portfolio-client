@@ -7,6 +7,7 @@ import MyService from "@/components/MyService/MyService/MyService";
 import Project from "@/components/Project/Project/Project";
 import Skill from "@/components/Skill/Skill";
 import SkillLoading from "@/components/Skill/SkillLoading/SkillLoading";
+import Testimonial from "@/components/Testimonial/Testimonial";
 
 export default function Home() {
   return (
@@ -36,6 +37,9 @@ export default function Home() {
       </div>
       <div className="px-5 md:px-36 py-10 sColor" id="education">
         <Education />
+      </div>
+      <div className="px-5 md:px-36 py-10 aboutmeBgColor" id="testimonial">
+        <Testimonial />
       </div>
     </div>
   );
