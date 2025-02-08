@@ -1,0 +1,8 @@
+@keyframes progressAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 77%; /* This should match the percentage passed to the component */
+  }
+}

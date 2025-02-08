@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Responsive Design",
+    "desc": "Responsive web design ensures an optimal user experience for your visitors.",
+    "image": "https://i.ibb.co/8bxy2Xp/Rresponsive-Design.png"
+  },
+  {
+    "id": 2,
+    "title": "Front-End Development",
+    "desc": "Web applications that captivate your audience and drive user engagement.",
+    "image": "https://i.ibb.co/dsThXBx/frontend-development-tools.png"
+  },
+  {
+    "id": 3,
+    "title": "Web Development",
+    "desc": "Ensuring a seamless experience on smartphones and tablets our development.",
+    "image": "https://i.ibb.co/pbRMTMZ/Web-Development.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Interactive Solutions",
+    "desc": "We excel at creating engaging web applications that drive user interaction.",
+    "image": "https://i.ibb.co/BzXc38s/Interactive-Solutions.webp"
+  },
+  {
+    "id": 5,
+    "title": "User-Centric Design",
+    "desc": "Our web designs prioritize user needs and preferences user centric design.",
+    "image": "https://i.ibb.co/xfPG6Nj/User-Central-Design.png"
+  },
+  {
+    "id": 6,
+    "title": "Mobile-Optimized",
+    "desc": "We ensure a seamless and efficient mobile user experience and optimized.",
+    "image": "https://i.ibb.co/MPDhHgy/Mobile-Optimized.png"
+  }
+]
