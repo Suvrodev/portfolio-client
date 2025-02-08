@@ -3,6 +3,7 @@ import AboutMe from "@/components/AboutMe/AboutMe";
 import Banner from "@/components/Banner/Banner";
 import Experience from "@/components/Experience/Experience";
 import MyService from "@/components/MyService/MyService/MyService";
+import Project from "@/components/Project/Project/Project";
 import Skill from "@/components/Skill/Skill";
 import SkillLoading from "@/components/Skill/SkillLoading/SkillLoading";
 
@@ -28,6 +29,9 @@ export default function Home() {
       </div>
       <div className="p-2 md:p-10 sColor flex justify-start md:justify-center ">
         <SkillLoading />
+      </div>
+      <div className="px-5 md:px-36 py-10 aboutmeBgColor" id="project">
+        <Project />
       </div>
     </div>
   );
