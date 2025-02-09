@@ -6,6 +6,7 @@ import Experience from "@/components/Experience/Experience";
 import MyService from "@/components/MyService/MyService/MyService";
 import Pricing from "@/components/Pricing/Pricing";
 import Project from "@/components/Project/Project/Project";
+import Footer from "@/components/Shared/Footer/Footer";
 import Skill from "@/components/Skill/Skill";
 import SkillLoading from "@/components/Skill/SkillLoading/SkillLoading";
 import Testimonial from "@/components/Testimonial/Testimonial";
@@ -46,6 +47,10 @@ export default function Home() {
       <div className="px-5 md:px-36 py-10 sColor" id="price">
         <Pricing />
       </div>
+
+      {/* <div>
+        <Footer />
+      </div> */}
       {/* <div className="px-5 md:px-36 py-10 aboutmeBgColor" id="testimonial">
         <TextEditor />
       </div> */}

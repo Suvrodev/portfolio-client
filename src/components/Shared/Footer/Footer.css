@@ -1,0 +1,473 @@
+.footerTitle {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "Edu VIC WA NT Beginner", "sans-serif" !important;
+}
+
+.footer-section {
+  position: relative;
+  background-image: linear-gradient(to top, #4f4a45, #192655 100%);
+}
+.footer-section .footer {
+  padding: 8rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+}
+/* @media (max-width: 56.25em) {
+    .footer-section .footer {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5rem;
+    }
+  } */
+.footer-section .footer__update-email .f-logo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-family: Pacifico, cursive;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.footer-section .footer__update-email .f-e-text {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.footer-section .footer__update-email .f-email .f-input {
+  font-size: 1.6rem;
+  color: inherit;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 10rem;
+  width: 95%;
+  display: block;
+}
+@media (max-width: 56.25em) {
+  .footer-section .footer__update-email .f-email .f-input {
+    width: 100%;
+  }
+}
+.footer-section .footer__update-email .f-email .f-input:focus {
+  outline: none;
+  box-shadow: 0 1rem 2rem #0000001a;
+}
+.footer-section .footer__update-email .f-social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.footer-section .footer__update-email .f-social a .f-icon {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-top: 1rem;
+}
+.footer-section .footer__details .f-d-text {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+.footer-section .footer__details .f-contact-info ul li {
+  list-style: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: inline-block;
+}
+.footer-section .footer__details .f-contact-info ul li a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s;
+}
+.footer-section .footer__details .f-contact-info ul li a:hover {
+  color: #fff;
+}
+.footer-section .footer__nav .f-n-text {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+.footer-section .footer__nav .f-nav ul .f-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+.footer-section .footer__nav .f-nav ul .f-nav-item .icon {
+  font-size: 1.6rem;
+  color: #fff;
+}
+.footer-section .footer__nav .f-nav ul .f-nav-item .f-nav-link {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.footer-section .footer__nav .f-nav ul .f-nav-item .f-nav-link:hover {
+  color: #fff;
+}
+.footer-section .footer__service .f-s-text {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+.footer-section .footer__service ul li {
+  font-size: 1.4rem;
+  font-weight: 600;
+  list-style: none;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s;
+}
+.footer-section .footer__service ul li:hover {
+  cursor: default;
+  color: #fff;
+}
+.footer-section .footer__waveWrapper {
+  height: 100px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: -99px;
+  width: auto;
+}
+.footer-section .footer__waveWrapper.bottom-wave {
+  bottom: -99px;
+}
+.footer-section .footer__waveWrapper.bottom-wave .bgFour {
+  bottom: -1px;
+}
+.footer-section .waveInner {
+  height: 100%;
+  overflow: visible;
+  position: absolute;
+  width: 100%;
+}
+.footer-section .bgOne {
+  opacity: 0.5;
+  z-index: 8;
+}
+.footer-section .bgTwo {
+  opacity: 0.5;
+  z-index: 9;
+}
+.footer-section .bgThree {
+  opacity: 0.9;
+  z-index: 10;
+}
+.footer-section .bgFour {
+  bottom: -1px;
+  opacity: 1;
+  z-index: 12;
+}
+.footer-section .wave {
+  height: 100%;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  width: 120vw;
+
+  /* ✅ Standard property */
+  mask-position: 0 bottom;
+
+  /* ✅ Vendor-prefixed version for WebKit browsers (Safari, Chrome) */
+  -webkit-mask-position: 0 bottom;
+
+  /* ✅ Ensure transform-origin works correctly */
+  transform-origin: center bottom;
+  -webkit-transform-origin: center bottom;
+}
+
+.footer-section .waveOne {
+  background: linear-gradient(to right, #192655 0%, #4f4a45 100%);
+
+  /* ✅ Standard CSS property */
+  mask: url(https://i.ibb.co/pW90J48/wavetop.png) repeat no-repeat 0 10%;
+
+  /* ✅ Vendor-prefixed version for WebKit browsers (Safari, Chrome) */
+  -webkit-mask: url(https://i.ibb.co/pW90J48/wavetop.png) repeat no-repeat 0 10%;
+}
+
+.footer-section .waveAnimation .waveOne {
+  -webkit-animation: animationWave 8s linear infinite;
+  animation: animationWave 8s linear infinite;
+}
+.footer-section .waveTwo {
+  background-image: linear-gradient(
+    to top right,
+    rgba(26, 40, 87, 0.3),
+    #4f4a45 70%
+  );
+
+  /* ✅ Standard property */
+  mask: url(https://i.ibb.co/7KcDdQh/wavemiddle.png) repeat no-repeat 0 10%;
+
+  /* ✅ WebKit-prefixed version for Safari & older Chrome */
+  -webkit-mask: url(https://i.ibb.co/7KcDdQh/wavemiddle.png) repeat no-repeat 0
+    10%;
+}
+.footer-section .waveAnimation .waveTwo {
+  -webkit-animation: animationWave 10s linear infinite;
+  animation: animationWave 10s linear infinite;
+}
+.footer-section .waveThree {
+  background-image: linear-gradient(
+    to top right,
+    rgba(26, 40, 87, 0.5),
+    #4f4a45 70%
+  );
+
+  /* ✅ Standard property */
+  mask: url(https://i.ibb.co/Trj1pMp/wavemiddle2.png) repeat no-repeat 0 -4%;
+
+  /* ✅ WebKit-prefixed version for Safari & older Chrome */
+  -webkit-mask: url(https://i.ibb.co/Trj1pMp/wavemiddle2.png) repeat no-repeat 0 -4%;
+}
+
+.footer-section .waveAnimation .waveThree {
+  -webkit-animation: animationWave 12s linear infinite;
+  animation: animationWave 12s linear infinite;
+}
+.footer-section .waveFour {
+  background-image: linear-gradient(to bottom, #4f4a45, #192655 0%);
+
+  /* ✅ Standard property */
+  mask: url(https://i.ibb.co/3cMcTwc/wavebottom.png) repeat no-repeat 0 54%;
+
+  /* ✅ WebKit-prefixed version for Safari & older Chrome */
+  -webkit-mask: url(https://i.ibb.co/3cMcTwc/wavebottom.png) repeat no-repeat 0
+    54%;
+}
+
+.footer-section .waveAnimation .waveFour {
+  -webkit-animation: animationWave 8s linear infinite;
+  animation: animationWave 8s linear infinite;
+  opacity: 1;
+}
+
+@-webkit-keyframes animationWave {
+  0% {
+    -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+    transform: translate(0) translateZ(0) scaleY(1);
+  }
+  25% {
+    -webkit-transform: translateX(-10%) translateZ(0) scaleY(0.8);
+    transform: translate(-10%) translateZ(0) scaleY(0.8);
+  }
+  50% {
+    -webkit-transform: translateX(0%) translateZ(0) scaleY(1);
+    transform: translate(0) translateZ(0) scaleY(1);
+  }
+  75% {
+    -webkit-transform: translateX(-10%) translateZ(0) scaleY(0.8);
+    transform: translate(-10%) translateZ(0) scaleY(0.8);
+  }
+  to {
+    -webkit-transform: translateX(0%) translateZ(0) scaleY(1);
+    transform: translate(0) translateZ(0) scaleY(1);
+  }
+}
+@keyframes animationWave {
+  0% {
+    -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+    transform: translate(0) translateZ(0) scaleY(1);
+  }
+  25% {
+    -webkit-transform: translateX(-10%) translateZ(0) scaleY(0.8);
+    transform: translate(-10%) translateZ(0) scaleY(0.8);
+  }
+  50% {
+    -webkit-transform: translateX(0%) translateZ(0) scaleY(1);
+    transform: translate(0) translateZ(0) scaleY(1);
+  }
+  75% {
+    -webkit-transform: translateX(-10%) translateZ(0) scaleY(0.8);
+    transform: translate(-10%) translateZ(0) scaleY(0.8);
+  }
+  to {
+    -webkit-transform: translateX(0%) translateZ(0) scaleY(1);
+    transform: translate(0) translateZ(0) scaleY(1);
+  }
+}
+@-webkit-keyframes bubbleCircle {
+  0% {
+    bottom: 0;
+    opacity: 0;
+  }
+  5% {
+    bottom: 0;
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  to {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+@keyframes bubbleCircle {
+  0% {
+    bottom: 0;
+    opacity: 0;
+  }
+  5% {
+    bottom: 0;
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  to {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-10rem);
+  }
+  80% {
+    transform: translate(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translate(10rem);
+  }
+  80% {
+    transform: translate(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@-moz-keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  to {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  to {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes triangleStroke {
+  0% {
+    stroke-dashoffset: 90;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes smallScale {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@keyframes K4qPF {
+  0% {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 12% 100%;
+  }
+}
+
+.footerCursor div {
+  cursor: pointer;
+}
