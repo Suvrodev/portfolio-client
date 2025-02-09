@@ -51,6 +51,11 @@ const CheckMessage = () => {
       <h1 className="text-2xl font-bold text-white">Check Message</h1>
       <div className="flex items-start bg-black h-[680px] rounded-md max-w-[1400px]">
         <div className="w-[20%] bg-green-600 flex flex-col h-[680px] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-transparent rounded-md">
+          {messages?.length == 0 && (
+            <p className="text-red-600 mt-10 text-xl font-bold text-center">
+              No Message
+            </p>
+          )}
           {messages?.map((message: TMessage, idx: number) => (
             <div
               key={idx}
