@@ -8,7 +8,7 @@ import { toast } from "sonner";
 const DashboardLogin = () => {
   const handleGoogleSignIn = () => {
     console.log("Google");
-    signIn("google", { callbackUrl: "/contact" });
+    signIn("google", { callbackUrl: "/dashboard" });
   };
   const handleDownloadCV = () => {
     // const cvUrl = "suvrodeb_CV.pdf";

@@ -41,3 +41,8 @@ export type TMessage = {
   updatedAt: string;
   __v: number;
 };
+export type Tuser = {
+  name: string | null;
+  email: string | null;
+  image: string | null;
+};
