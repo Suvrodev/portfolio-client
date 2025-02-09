@@ -19,8 +19,22 @@ const messageManagement = baseApi.injectEndpoints({
           method: "GET",
         };
       },
+      providesTags: ["message"],
+    }),
+    delteMessage: builder.mutation({
+      query: (id: string) => {
+        return {
+          url: `email/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["message"],
     }),
   }),
 });
 
-export const { useSendMessageMutation, useGetMessageQuery } = messageManagement;
+export const {
+  useSendMessageMutation,
+  useGetMessageQuery,
+  useDelteMessageMutation,
+} = messageManagement;
