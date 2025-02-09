@@ -17,8 +17,8 @@ import Image from "next/image";
 
 const UserDashboard = () => {
   return (
-    <div className="sticky top-0">
-      <div className="bg-[#F3F9FF] h-[100vh] w-full flex flex-col items-center text-black overflow-hidden relative">
+    <div className="sticky top-0 bg-yellow-400">
+      <div className=" relative top-0 bg-[#F3F9FF]  h-[100vh] w-full flex flex-col items-center text-black overflow-hidden ">
         <div className="mt-10 mb-8 ">
           <div className="cursor-pointer z-10 bg-yellow-400 flex justify-center items-center">
             <Image
