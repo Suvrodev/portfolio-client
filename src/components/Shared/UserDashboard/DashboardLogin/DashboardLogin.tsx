@@ -1,17 +1,24 @@
 "use client";
 
+import { sonarId } from "@/utils/sonarId";
 import { FaGoogle } from "react-icons/fa";
+import { toast } from "sonner";
 
 const DashboardLogin = () => {
   const handleGoogleSignIn = () => {};
   const handleDownloadCV = () => {
-    const cvUrl = "suvrodeb_CV.pdf";
+    // const cvUrl = "suvrodeb_CV.pdf";
+    // const cvUrl =
+    //   "https://drive.google.com/file/d/1RNvA2bvmi1KMBNbkNZJ0fcQLqpkDlpNm/view?usp=sharing";
+    const cvUrl =
+      "https://drive.google.com/uc?export=download&id=1RNvA2bvmi1KMBNbkNZJ0fcQLqpkDlpNm";
     const link = document.createElement("a");
     link.href = cvUrl;
     link.download = "Suvrodeb_CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    toast.success("Downloading from google drive", { id: sonarId });
   };
 
   return (
