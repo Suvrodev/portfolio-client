@@ -1,16 +1,15 @@
 import "./page.css";
 import AboutMe from "@/components/AboutMe/AboutMe";
 import Banner from "@/components/Banner/Banner";
+import Blogs from "@/components/Blogs/Blogs/Blogs";
 import Education from "@/components/Education/Education";
 import Experience from "@/components/Experience/Experience";
 import MyService from "@/components/MyService/MyService/MyService";
 import Pricing from "@/components/Pricing/Pricing";
 import Project from "@/components/Project/Project/Project";
-import Footer from "@/components/Shared/Footer/Footer";
 import Skill from "@/components/Skill/Skill";
 import SkillLoading from "@/components/Skill/SkillLoading/SkillLoading";
 import Testimonial from "@/components/Testimonial/Testimonial";
-import TextEditor from "@/components/TextEditor/TextEditor";
 
 export default function Home() {
   return (
@@ -46,6 +45,13 @@ export default function Home() {
       </div>
       <div className="px-5 md:px-36 py-10 sColor" id="price">
         <Pricing />
+      </div>
+
+      <div
+        className="px-5 md:px-36 py-10 overflow-hidden aboutmeBgColor"
+        id="blog"
+      >
+        <Blogs />
       </div>
 
       {/* <div>

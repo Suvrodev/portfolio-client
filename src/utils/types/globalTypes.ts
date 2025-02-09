@@ -23,3 +23,10 @@ export type TTestimonial = {
   position: string;
   rating: number;
 };
+export type TBlog = {
+  id: number;
+  image: string;
+  title: string;
+  url: string;
+  date: string;
+};

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co/nnc6m5X/react-Next.jpg",
+    "title": "Next.js & React.js",
+    "url": "https://dev.to/med_code/nextjs-reactjs-useful-blogs-articles-4489",
+    "date": "  Jan 14,2020"
+  },
+  {
+    "id": 2,
+    "image": "https://i.ibb.co/TBHw6jf/Redux.jpg",
+    "title": "REDUX",
+    "url": "https://dev.to/devyank_nagpal_c746402a7c/redux-3deb",
+    "date": " Jan 20, 2022"
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co/3WPJKsn/Understand-Typescript.jpg",
+    "title": "TypeScript - get types from data using typeof",
+    "url": "https://dev.to/andreasbergqvist/typescript-get-types-from-data-using-typeof-4b9c",
+    "date": " Apr 10, 2019"
+  }
+]
