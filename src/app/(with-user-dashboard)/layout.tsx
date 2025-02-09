@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import DashboardPage from "./dashboard/page";
 import MobileHeader from "@/components/Shared/MobileHeader/MobileHeader";
 import GotoTop from "@/components/Shared/GotoTop/GotoTop";
+import SocialIconInBody from "@/components/Shared/SocialIconInBody/SocialIconInBody";
 interface IProps {
   children: ReactNode;
 }
@@ -22,7 +23,7 @@ const layout = ({ children }: IProps) => {
         </div>
       </div>
       <div>
-        {/* <LeftSocialIcon /> */}
+        <SocialIconInBody />
         <GotoTop />
       </div>
     </div>

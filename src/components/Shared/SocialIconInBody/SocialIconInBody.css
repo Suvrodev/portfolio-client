@@ -1,0 +1,178 @@
+.KarnofuliIcons {
+  width: 50px;
+  height: 50px;
+  left: 16px;
+  bottom: 165px;
+  background: #76da33;
+  position: fixed;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10001 !important;
+  display: inline-block;
+  line-height: 50px;
+  animation: glowing 1.5s infinite;
+}
+@keyframes glowing {
+  0% {
+    background-color: #10b981;
+    box-shadow: 0 0 3px #10b981;
+  }
+  50% {
+    background-color: #8cb910;
+    box-shadow: 0 0 40px #8cb910;
+  }
+  to {
+    background-color: #10b981;
+    box-shadow: 0 0 3px #10b981;
+  }
+}
+
+.Baroawlia {
+  width: 50px;
+  height: 50px;
+  left: 16px;
+  bottom: 98px;
+  background: #76da33;
+  position: fixed;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10001 !important;
+  display: inline-block;
+  line-height: 50px;
+  animation: glowingBaroawlia 1.5s infinite;
+}
+
+@keyframes glowingBaroawlia {
+  0% {
+    background-color: #02abcc;
+    box-shadow: 0 0 3px #02abcc;
+  }
+  50% {
+    background-color: #13b3bc;
+    box-shadow: 0 0 40px #13b3bc;
+  }
+  to {
+    background-color: #02abcc;
+    box-shadow: 0 0 3px #02abcc;
+  }
+}
+
+.PhoneCall {
+  width: 50px;
+  height: 50px;
+  left: 16px;
+  bottom: 28px;
+  background-image: linear-gradient(
+    to right,
+    #598f92 25%,
+    #1a4446 100%
+  ) !important;
+  position: fixed;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10001 !important;
+  display: inline-block;
+  line-height: 50px;
+}
+.PhoneCall:before {
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  top: -15px;
+  left: -15px;
+  background-image: linear-gradient(
+    to right,
+    #82b6b9 25%,
+    #2f8084 100%
+  ) !important;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+  opacity: 0.6;
+  animation: pulse 1.8s ease-out;
+  animation-iteration-count: infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  75% {
+    transform: scale(0.9);
+    opacity: 0.3;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes coccoc-alo-circle-anim {
+  0% {
+    transform: rotate(0) scale(0.5) skew(1deg);
+    opacity: 0.1;
+  }
+  30% {
+    transform: rotate(0) scale(0.7) skew(1deg);
+    opacity: 0.5;
+  }
+  to {
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.1;
+  }
+}
+@keyframes coccoc-alo-circle-fill-anim {
+  0% {
+    transform: rotate(0) scale(0.7) skew(1deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.2;
+  }
+  to {
+    transform: rotate(0) scale(0.7) skew(1deg);
+    opacity: 0.2;
+  }
+}
+@keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  to {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+}
+.PhoneCall i {
+  animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  color: #fff;
+  font-size: 22px;
+}
