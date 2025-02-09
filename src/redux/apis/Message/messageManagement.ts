@@ -12,7 +12,15 @@ const messageManagement = baseApi.injectEndpoints({
         };
       },
     }),
+    getMessage: builder.query({
+      query: () => {
+        return {
+          url: "email",
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useSendMessageMutation } = messageManagement;
+export const { useSendMessageMutation, useGetMessageQuery } = messageManagement;

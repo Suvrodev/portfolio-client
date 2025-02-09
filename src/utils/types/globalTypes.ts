@@ -30,3 +30,14 @@ export type TBlog = {
   url: string;
   date: string;
 };
+
+export type TMessage = {
+  _id: string;
+  name: string;
+  email: string;
+  message: string;
+  isRead: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
