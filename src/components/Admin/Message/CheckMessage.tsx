@@ -3,6 +3,7 @@
 import {
   useDelteMessageMutation,
   useGetMessageQuery,
+  useUpdateMessageMutation,
 } from "@/redux/apis/Message/messageManagement";
 import { formatDate } from "@/utils/functions/formatDate";
 import { formatTime } from "@/utils/functions/formateTime";
@@ -14,16 +15,22 @@ import { sonarId } from "@/utils/sonarId";
 
 const CheckMessage = () => {
   const [deleteMessage] = useDelteMessageMutation();
+  const [updateMessgae] = useUpdateMessageMutation();
   const { data, isLoading } = useGetMessageQuery(undefined);
   const messages = data?.data;
   //   console.log(messages);
 
   const [messageNumber, setMessageNumber] = useState(0);
-  const handleMessageShow = (number: number, _id: string) => {
+  const handleMessageShow = async (number: number, _id: string) => {
     console.log("Message Number: ", number);
     setMessageNumber(number);
 
     console.log("Message id: ", _id);
+    const updateData = { isRead: true };
+    console.log("Update Data: ", updateData);
+    // toast.loading("Updating", { id: sonarId });
+    const res = await updateMessgae({ _id, updateData }).unwrap();
+    console.log("Res: ", res);
   };
 
   const handleDeleteMessage = async (id: string) => {
@@ -58,7 +65,11 @@ const CheckMessage = () => {
                 <span> Date: {formatDate(message?.createdAt)}</span>
               </div>
               <div className="flex flex-col items-center justify-between  h-full pr-5  w-[10%] ">
-                <p className="size-4 rounded-full bg-green-500"></p>
+                <p
+                  className={`size-4 rounded-full ${
+                    message?.isRead ? "" : " bg-green-500"
+                  }`}
+                ></p>
                 <p
                   className="bg-red-500 p-2 rounded-md flex items-center justify-center text-white"
                   onClick={() => handleDeleteMessage(message?._id)}

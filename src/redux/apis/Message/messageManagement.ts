@@ -30,6 +30,16 @@ const messageManagement = baseApi.injectEndpoints({
       },
       invalidatesTags: ["message"],
     }),
+    updateMessage: builder.mutation({
+      query: ({ _id, updateData }) => {
+        return {
+          url: `email/update/${_id}`,
+          method: "PATCH",
+          body: updateData,
+        };
+      },
+      invalidatesTags: ["message"],
+    }),
   }),
 });
 
@@ -37,4 +47,5 @@ export const {
   useSendMessageMutation,
   useGetMessageQuery,
   useDelteMessageMutation,
+  useUpdateMessageMutation,
 } = messageManagement;
