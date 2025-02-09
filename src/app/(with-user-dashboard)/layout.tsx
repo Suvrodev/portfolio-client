@@ -18,7 +18,7 @@ const layout = ({ children }: IProps) => {
           <MobileHeader />
         </div>
         <div>{children}</div>
-        <div className="sticky top-0">
+        <div className="sticky top-0 bg-yellow-500">
           <Footer />
         </div>
       </div>

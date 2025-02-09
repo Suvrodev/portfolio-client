@@ -14,7 +14,7 @@ import sendEmail from "@/utils/functions/sendEmail";
 const Footer = () => {
   return (
     <div>
-      <div className="footerCursor footer-section font-bold">
+      <div className="footerCursor footer-section font-bold mt-32 bg-yellow-300">
         <div className="py-20 px-10 grid grid-cols-1 md:grid-cols-4 gap-4 ">
           <div className="">
             <h1 className="text-[24px]  footerTitle">Suvrodeb Howlader</h1>
