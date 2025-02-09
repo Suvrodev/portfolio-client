@@ -2,6 +2,7 @@ import Footer from "@/components/Shared/Footer/Footer";
 import React, { ReactNode } from "react";
 import DashboardPage from "./dashboard/page";
 import MobileHeader from "@/components/Shared/MobileHeader/MobileHeader";
+import GotoTop from "@/components/Shared/GotoTop/GotoTop";
 interface IProps {
   children: ReactNode;
 }
@@ -19,6 +20,10 @@ const layout = ({ children }: IProps) => {
         <div className="sticky top-0">
           <Footer />
         </div>
+      </div>
+      <div>
+        {/* <LeftSocialIcon /> */}
+        <GotoTop />
       </div>
     </div>
   );
