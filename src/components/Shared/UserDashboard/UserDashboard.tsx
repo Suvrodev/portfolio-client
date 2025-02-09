@@ -9,12 +9,12 @@ import goCall from "@/utils/functions/goCall";
 import {
   Home as HomeIcon,
   Info as InfoIcon,
-  ManageAccounts as ManageAccountsIcon,
   RssFeed as RssFeedIcon,
   Email as EmailIcon,
 } from "@mui/icons-material";
 import Image from "next/image";
 import DashboardLogin from "./DashboardLogin/DashboardLogin";
+import Link from "next/link";
 
 const UserDashboard = () => {
   return (
@@ -134,15 +134,19 @@ const UserDashboard = () => {
         {/* Navigation Links */}
         <div className="flex flex-col gap-1 z-10">
           {[
-            { label: "Home", Icon: HomeIcon },
-            { label: "Project", Icon: InfoIcon },
-            { label: "Blog", Icon: RssFeedIcon },
-            { label: "Contact", Icon: EmailIcon },
-          ].map(({ label, Icon }) => (
-            <div key={label} className="flex gap-2 items-center cursor-pointer">
+            { label: "Home", Icon: HomeIcon, link: "/" },
+            { label: "Project", Icon: InfoIcon, link: "/project" },
+            { label: "Blog", Icon: RssFeedIcon, link: "/blog" },
+            { label: "Contact", Icon: EmailIcon, link: "/contact" },
+          ].map(({ label, Icon, link }) => (
+            <Link
+              key={label}
+              href={link}
+              className="flex gap-2 items-center cursor-pointer"
+            >
               <Icon className="opacity-50" />
               <span className="u-line-effect">{label}</span>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="z-40">

@@ -1,11 +1,15 @@
 "use client";
 
 import { sonarId } from "@/utils/sonarId";
+import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 import { toast } from "sonner";
 
 const DashboardLogin = () => {
-  const handleGoogleSignIn = () => {};
+  const handleGoogleSignIn = () => {
+    console.log("Google");
+    signIn("google", { callbackUrl: "/contact" });
+  };
   const handleDownloadCV = () => {
     // const cvUrl = "suvrodeb_CV.pdf";
     // const cvUrl =
@@ -32,8 +36,8 @@ const DashboardLogin = () => {
           Download CV
         </button>
         <button
-          onClick={handleGoogleSignIn}
-          className="flex items-center gap-2 bg-red-500 text-white px-6 py-2 rounded-lg font-bold shadow-md hover:bg-red-700 transition duration-300"
+          onClick={() => handleGoogleSignIn()}
+          className="flex items-center gap-2 btn bg-yellow-400 text-white border-0  rounded-lg font-bold shadow-md hover:bg-yellow-500 transition duration-300"
         >
           <FaGoogle />
           Sign in with Google
