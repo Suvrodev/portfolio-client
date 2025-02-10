@@ -1,20 +1,31 @@
 "use client";
+import { useDeleteBlogMutation } from "@/redux/apis/BlogManagement/blogmanagement";
 import "./BogCard.css";
 import { TBlog } from "@/utils/types/globalTypes";
 import Image from "next/image";
 import React from "react";
+import { sonarId } from "@/utils/sonarId";
+import { toast } from "sonner";
 
 interface IProps {
   blog: TBlog;
 }
 const BlogCard = ({ blog }: IProps) => {
+  const [deleteBlog] = useDeleteBlogMutation();
   const { _id, title, content, image, category } = blog;
   const trimmedContent =
     content.length > 50 ? content.substring(0, 50) + "..." : content;
 
-  const handleDelete = () => {
-    console.log(`Deleting blog with ID: ${_id}`);
-    // Add your delete logic here (e.g., API call)
+  const handleDelete = async (id: string) => {
+    console.log(`Deleting blog with ID: ${id}`);
+    toast.loading("Deleting", { id: sonarId });
+    try {
+      const res = await deleteBlog(id).unwrap();
+      console.log("Res: ", res);
+      if (res?.status) {
+        toast.success(res?.message, { id: sonarId });
+      }
+    } catch {}
   };
 
   const handleUpdate = () => {
@@ -71,7 +82,7 @@ const BlogCard = ({ blog }: IProps) => {
           </svg>
         </button>
         <button
-          onClick={handleDelete}
+          onClick={() => handleDelete(_id)}
           className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors"
         >
           <svg

@@ -12,7 +12,16 @@ const blogManagement = baseApi.injectEndpoints({
         };
       },
     }),
+    deleteBlog: builder.mutation({
+      query: (id) => {
+        console.log("Blog id In redux: ", id);
+        return {
+          url: `/blog/${id}`,
+          method: "DELETE",
+        };
+      },
+    }),
   }),
 });
 
-export const { useAddblogMutation } = blogManagement;
+export const { useAddblogMutation, useDeleteBlogMutation } = blogManagement;
