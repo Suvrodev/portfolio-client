@@ -1,0 +1,17 @@
+export const blogCategories = [
+  "Frontend Development",
+  "Backend Development",
+  "Full-Stack Development",
+  "UI/UX Design",
+  "Database Management",
+  "DevOps & Deployment",
+  "API Development",
+  "Web Security",
+  "Performance Optimization",
+  "Testing & Debugging",
+  "Mobile Responsive Design",
+  "SEO & Web Analytics",
+  "Content Management Systems (CMS)",
+  "E-commerce Development",
+  "Web3 & Blockchain Development",
+];

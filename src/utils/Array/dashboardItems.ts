@@ -1,27 +1,27 @@
 export const dashboardItems = [
   {
     text: "Dashboard Home",
-    path: "/admin-dashboard",
+    path: "/dashboard",
   },
   {
-    text: "My Profile",
-    path: "/admin-dashboard/user-profile",
+    text: "Message",
+    path: "/dashboard/message",
   },
   {
-    text: "Add Book",
-    path: "/admin-dashboard/admin-add-book",
+    text: "Add Project",
+    path: "/dashboard/add-project",
   },
   {
-    text: "Book Management",
-    path: "/admin-dashboard/book-management",
+    text: "All Project",
+    path: "/dashboard/project",
   },
   {
-    text: "User Management",
-    path: "/admin-dashboard/user-management",
+    text: "Add Blog",
+    path: "/dashboard/add-blog",
   },
   {
-    text: "Order Management",
-    path: "/admin-dashboard/order-management",
+    text: "All Blog",
+    path: "/dashboard/blog",
   },
   // {
   //   text: "About Page",

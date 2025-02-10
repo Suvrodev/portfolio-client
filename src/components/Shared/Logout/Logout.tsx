@@ -1,14 +1,8 @@
 "use client";
 
-import { Tuser } from "@/utils/types/globalTypes";
 import { signOut } from "next-auth/react";
 
-interface IProps {
-  user: Tuser;
-}
-
-const Logout = ({ user }: IProps) => {
-  console.log("User: from Logout", user);
+const Logout = () => {
   return (
     <button
       onClick={() => signOut()}

@@ -69,7 +69,7 @@ const layout = async ({ children }: Iprops) => {
               ))}
 
               <div>
-                <Logout user={user} />
+                <Logout />
               </div>
             </div>
           </ul>

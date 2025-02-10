@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const TextEditor = () => {
-  return (
-    <div>
-      <h1>Text Editor</h1>
-    </div>
-  );
+  const [value, setValue] = useState("");
+  return <ReactQuill theme="snow" value={value} onChange={setValue} />;
 };
 
 export default TextEditor;
