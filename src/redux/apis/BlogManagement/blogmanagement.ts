@@ -21,7 +21,21 @@ const blogManagement = baseApi.injectEndpoints({
         };
       },
     }),
+    updateBlog: builder.mutation({
+      query: ({ id, updateData }) => {
+        console.log("Blog id In redux: ", id);
+        return {
+          url: `/blog/update/${id}`,
+          method: "PATCH",
+          body: updateData,
+        };
+      },
+    }),
   }),
 });
 
-export const { useAddblogMutation, useDeleteBlogMutation } = blogManagement;
+export const {
+  useAddblogMutation,
+  useDeleteBlogMutation,
+  useUpdateBlogMutation,
+} = blogManagement;

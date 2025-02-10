@@ -13,7 +13,7 @@ interface Iprops {
 }
 const layout = async ({ children }: Iprops) => {
   const session = await getServerSession(authOptions);
-  console.log("Session from dashboard", session);
+  // console.log("Session from dashboard", session);
   const user = session?.user as Tuser;
 
   return (

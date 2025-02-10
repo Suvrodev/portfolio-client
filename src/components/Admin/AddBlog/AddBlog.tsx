@@ -126,9 +126,9 @@ const AddBlog = () => {
                 <Image
                   src={previewImage}
                   alt="Preview"
-                  width={48}
-                  height={48}
-                  className="w-48 h-48 object-cover rounded-lg shadow-lg cursor-pointer"
+                  width={300}
+                  height={300}
+                  className="w-[300px] h-[300px] object-cover rounded-lg shadow-lg cursor-pointer"
                   onClick={uploadImage}
                 />
                 <CreateIcon
@@ -141,9 +141,9 @@ const AddBlog = () => {
                 <Image
                   src={addImage}
                   alt="Default"
-                  width={48}
-                  height={48}
-                  className="w-48 h-48 object-cover rounded-lg shadow-lg cursor-pointer"
+                  width={300}
+                  height={300}
+                  className="w-[300px] h-[300px] object-cover rounded-lg shadow-lg cursor-pointer"
                   onClick={uploadImage}
                 />
                 <CreateIcon
@@ -161,7 +161,7 @@ const AddBlog = () => {
                   type="text"
                   name="titlee"
                   required
-                  className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
+                  className="w-full h-[65px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
                 />
               </div>
               <div>
@@ -173,7 +173,7 @@ const AddBlog = () => {
                   value={category}
                   onChange={handleCategory}
                   required
-                  className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
+                  className="w-full h-[65px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
                 >
                   <option value="" disabled>
                     Select Category
