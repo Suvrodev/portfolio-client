@@ -24,11 +24,14 @@ export type TTestimonial = {
   rating: number;
 };
 export type TBlog = {
-  id: number;
-  image: string;
+  _id: string;
   title: string;
-  url: string;
-  date: string;
+  content: string;
+  image: string;
+  category: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 };
 
 export type TMessage = {

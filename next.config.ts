@@ -5,17 +5,18 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*",
+        hostname: "res.cloudinary.com", // Explicitly allow Cloudinary
+      },
+      {
+        protocol: "http",
+        hostname: "res.cloudinary.com", // Allow Cloudinary (HTTP)
+      },
+      {
+        protocol: "https",
+        hostname: "**", // Allow all HTTPS images (not recommended for security, but works)
       },
     ],
   },
-  // webpack: (config) => {
-  //   config.module?.rules.push({
-  //     test: /\.css$/,
-  //     use: ["style-loader", "css-loader"],
-  //   });
-  //   return config;
-  // },
 };
 
 export default nextConfig;

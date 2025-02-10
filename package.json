@@ -17,7 +17,9 @@
     "@smastrom/react-rating": "^1.5.0",
     "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.7.9",
+    "framer-motion": "^12.4.2",
     "jodit": "^4.5.4",
+    "jwt-decode": "^4.0.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.475.0",
     "next": "15.1.6",
@@ -28,6 +30,7 @@
     "react-icons": "^5.4.0",
     "react-redux": "^9.2.0",
     "react-simple-typewriter": "^5.0.1",
+    "redux-persist": "^6.0.0",
     "sonner": "^1.7.4"
   },
   "devDependencies": {

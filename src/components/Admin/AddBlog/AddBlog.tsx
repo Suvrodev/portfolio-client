@@ -10,11 +10,14 @@ import CreateIcon from "@mui/icons-material/Create";
 import { blogCategories } from "@/utils/Array/blogCategories";
 import Image from "next/image";
 import TextEditor from "../TextEditor/TextEditor";
+import { useAddblogMutation } from "@/redux/apis/BlogManagement/blogmanagement";
 
 const imageHostingUrl =
   "https://api.cloudinary.com/v1_1/dixfkupof/image/upload";
 
 const AddBlog = () => {
+  const [addBlog] = useAddblogMutation();
+
   const imageRef = useRef<HTMLInputElement | null>(null);
 
   const [category, setCategory] = useState("");
@@ -53,7 +56,7 @@ const AddBlog = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Submit button");
+
     const Form = event.target as HTMLFormElement;
     const title = Form.titlee.value;
 
@@ -94,26 +97,20 @@ const AddBlog = () => {
         ///Send Data in Back end
         const formData = {
           title,
-          imageUrl,
+          image: imageUrl,
           category,
-          description,
+          content: description,
         };
         console.log("Form Data: ", formData);
         toast.loading("Inserting Blog", { id: sonarId });
-        // const res = await addBook(formData).unwrap();
-        // console.log("Res: ", res);
-        // if (res?.success) {
-        //   toast.success(res?.message, { id: sonarId });
-        // }
+        const res = await addBlog(formData).unwrap();
+        console.log("Res: ", res);
+        if (res?.success) {
+          toast.success(res?.message, { id: sonarId });
+        }
       } else {
-        console.error("Image upload failed:", imageResponse);
-        toast.error("Something error in uploading Image", { id: sonarId });
-        toast.error("Imagebb server issue to upload image", { id: sonarId });
       }
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      toast.error("Imagebb server issue to upload image", { id: sonarId });
-    }
+    } catch {}
   };
 
   return (

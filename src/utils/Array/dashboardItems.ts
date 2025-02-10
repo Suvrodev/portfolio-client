@@ -21,7 +21,7 @@ export const dashboardItems = [
   },
   {
     text: "All Blog",
-    path: "/dashboard/blog",
+    path: "/dashboard/all-blog",
   },
   // {
   //   text: "About Page",
