@@ -16,6 +16,7 @@ import { revalidateProjects } from "@/app/actions/revalidateProjects";
 import { useEffect, useState, useTransition } from "react";
 // import UpdateProject from "../UpdateProject/UpdateProject";
 import dynamic from "next/dynamic";
+import { usePathname, useRouter } from "next/navigation";
 // import UpdateProject from "../UpdateProject/UpdateProject";
 interface IProps {
   project: TProject;
@@ -31,6 +32,8 @@ const ProjectBox = ({ project, admin = false }: IProps) => {
   const [deleteProject] = useDeleteProjectMutation();
   const { _id, liveurl, image, name, frontendrepo, backendrepo } = project;
   const [, startTransition] = useTransition();
+  const path = usePathname();
+  const router = useRouter();
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -58,8 +61,19 @@ const ProjectBox = ({ project, admin = false }: IProps) => {
     }
   };
 
+  const handleGoProjectDetail = (_id: string) => {
+    if (path != "/project") {
+      console.log("in admin or Home");
+      return;
+    }
+    router.push(`/project/${_id}`);
+  };
+
   return (
-    <div className="relative rounded-md p-2 border-[2px] projectBoxBG">
+    <div
+      className="relative rounded-md p-2 border-[2px] projectBoxBG"
+      onClick={() => handleGoProjectDetail(_id)}
+    >
       {admin && (
         <div className="absolute top-3 right-3 flex gap-2 z-10">
           <div className=" bg-white/50 rounded-full hover:bg-white text-black transition">

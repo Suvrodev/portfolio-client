@@ -7,15 +7,28 @@ import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
 import goLink from "@/utils/functions/goLink";
 import Image from "next/image";
 import { TProject } from "@/utils/types/globalTypes";
+import { usePathname, useRouter } from "next/navigation";
 
 interface IProps {
   project: TProject;
 }
 
 const ProjectBox = ({ project }: IProps) => {
-  const { liveurl, image, name, frontendrepo, backendrepo } = project;
+  const { _id, liveurl, image, name, frontendrepo, backendrepo } = project;
+  const path = usePathname();
+  const router = useRouter();
+  console.log("Path: ", path);
+  const handleGoProjectDetail = (_id: string) => {
+    if (path != "/project") {
+      return;
+    }
+    router.push(`/project/${_id}`);
+  };
   return (
-    <div className="rounded-md p-2 border-[2px] projectBoxBG">
+    <div
+      className="rounded-md p-2 border-[2px] projectBoxBG"
+      onClick={() => handleGoProjectDetail(_id)}
+    >
       <div className="flex flex-col items-center">
         <div className="relative w-full h-60 overflow-hidden border-2 border-gray-300 rounded">
           <Image
