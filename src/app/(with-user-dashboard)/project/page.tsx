@@ -3,7 +3,7 @@ import { TProject } from "@/utils/types/globalTypes";
 import React from "react";
 
 const ProjectPage = async () => {
-  const res = await fetch("http://localhost:5000/api/project/", {
+  const res = await fetch(`${process.env.BASE_URL}/project/`, {
     next: { revalidate: 30 },
   });
   const data = await res.json();
