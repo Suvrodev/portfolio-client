@@ -11,8 +11,9 @@ import UpdateBlog from "../UpdateBlog/UpdateBlog";
 
 interface IProps {
   blog: TBlog;
+  admin?: boolean;
 }
-const BlogCard = ({ blog }: IProps) => {
+const BlogCard = ({ blog, admin = false }: IProps) => {
   const [deleteBlog] = useDeleteBlogMutation();
   const { _id, title, content, image, category } = blog;
 
@@ -69,15 +70,17 @@ const BlogCard = ({ blog }: IProps) => {
       </div>
 
       {/* Action Buttons */}
-      <div className="absolute top-2 right-2 flex space-x-2">
-        <UpdateBlog blog={blog} />
-        <button
-          onClick={() => handleDelete(_id)}
-          className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors"
-        >
-          <Trash2 className="text-red-500 font-bold" />
-        </button>
-      </div>
+      {admin && (
+        <div className="absolute top-2 right-2 flex space-x-2">
+          <UpdateBlog blog={blog} />
+          <button
+            onClick={() => handleDelete(_id)}
+            className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors"
+          >
+            <Trash2 className="text-red-500 font-bold" />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

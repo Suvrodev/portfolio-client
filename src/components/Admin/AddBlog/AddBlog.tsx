@@ -121,37 +121,22 @@ const AddBlog = () => {
         </h2>
         <div className="max-w-10/12 mx-auto">
           <div className="mb-6 flex justify-center">
-            {previewImage ? (
-              <div className="relative">
-                <Image
-                  src={previewImage}
-                  alt="Preview"
-                  width={300}
-                  height={300}
-                  className="w-[300px] h-[300px] object-cover rounded-lg shadow-lg cursor-pointer"
-                  onClick={uploadImage}
-                />
+            <div className="relative">
+              <Image
+                src={previewImage || addImage}
+                alt="Preview"
+                width={300}
+                height={300}
+                className="w-[300px] h-[300px] object-cover rounded-lg shadow-lg cursor-pointer"
+                onClick={uploadImage}
+              />
+              <div className="absolute top-2 right-2 bg-green-500   rounded-full p-2  flex items-center justify-center">
                 <CreateIcon
-                  className="absolute top-2 right-2 text-white cursor-pointer"
+                  className="text-white text-xl cursor-pointerr"
                   onClick={uploadImage}
                 />
               </div>
-            ) : (
-              <div className="relative">
-                <Image
-                  src={addImage}
-                  alt="Default"
-                  width={300}
-                  height={300}
-                  className="w-[300px] h-[300px] object-cover rounded-lg shadow-lg cursor-pointer"
-                  onClick={uploadImage}
-                />
-                <CreateIcon
-                  className="absolute top-2 right-2 text-white cursor-pointer"
-                  onClick={uploadImage}
-                />
-              </div>
-            )}
+            </div>
           </div>
           <form onSubmit={handleSubmit} className="space-y-6 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -1,32 +1,46 @@
 "use client";
-import { Modal } from "antd";
-import { TBlog } from "@/utils/types/globalTypes";
+import { useUpdateProjectMutation } from "@/redux/apis/ProjectManagement/projectManagement";
+import { sonarId } from "@/utils/sonarId";
+import { TProject } from "@/utils/types/globalTypes";
+import axios from "axios";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  startTransition,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { toast } from "sonner";
 import UpdateIcon from "@mui/icons-material/Update";
 import CreateIcon from "@mui/icons-material/Create";
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
-import { toast } from "sonner";
-import { sonarId } from "@/utils/sonarId";
-import axios from "axios";
+import { Modal } from "antd";
 import Image from "next/image";
-import { blogCategories } from "@/utils/Array/blogCategories";
-import TextEditor from "../../TextEditor/TextEditor";
-import { useUpdateBlogMutation } from "@/redux/apis/BlogManagement/blogmanagement";
+import TextEditor from "@/components/Admin/TextEditor/TextEditor";
+import { revalidateProjects } from "@/app/actions/revalidateProjects";
 
 const imageHostingUrl =
   "https://api.cloudinary.com/v1_1/dixfkupof/image/upload";
 
 interface IProps {
-  blog: TBlog;
+  project: TProject;
 }
 
-const UpdateBlog = ({ blog }: IProps) => {
+const UpdateProject = ({ project }: IProps) => {
   // Hooks should be declared at the top in the same order for every render
-  const [updateBlog] = useUpdateBlogMutation();
-  const { title, content, image, category: bCategory } = blog;
+  const [updateProject] = useUpdateProjectMutation();
+  const {
+    name,
+    liveurl,
+    frontendrepo,
+    backendrepo,
+    descriptions: content,
+    image,
+  } = project;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [category, setCategory] = useState(bCategory);
+
   const [description, setDescription] = useState<string>(content);
   const [previewImage, setPreviewImage] = useState<string>(image || "");
   const imageRef = useRef<HTMLInputElement | null>(null);
@@ -40,11 +54,6 @@ const UpdateBlog = ({ blog }: IProps) => {
   // Modal Handlers
   const showModal = () => setIsModalOpen(true);
   const handleCancel = () => setIsModalOpen(false);
-
-  // Handle category change
-  const handleCategory = (e: ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value);
-  };
 
   // Upload image logic
   const uploadImage = () => {
@@ -72,10 +81,18 @@ const UpdateBlog = ({ blog }: IProps) => {
           toast.success("Image Uploaded", { id: sonarId });
 
           const updateData = { image: newImageUrl };
-          const res = await updateBlog({ id: blog?._id, updateData }).unwrap();
+
+          const res = await updateProject({
+            id: project?._id,
+            updateData,
+          }).unwrap();
+          console.log("Change Image res: ", res);
 
           if (res?.status) {
             toast.success("Image Updated Successfully");
+            startTransition(async () => {
+              await revalidateProjects();
+            });
           }
         }
       } catch (error) {
@@ -88,15 +105,30 @@ const UpdateBlog = ({ blog }: IProps) => {
   // Form submission logic
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("Form Submit");
     const Form = event.target as HTMLFormElement;
-    const title = Form.titlee.value;
+    const name = Form.projectName.value;
+    const liveurl = Form.liveurl.value;
+    const frontendrepo = Form.frontendrepo.value;
+    const backendrepo = Form.backendrepo.value;
 
-    const updateData = { title, category, content: description };
+    const updateData = {
+      name,
+      liveurl,
+      frontendrepo,
+      backendrepo,
+      descriptions: description,
+    };
     console.log("update Data: ", updateData);
-    // alert("Update Data: " + JSON.stringify(updateData));
     toast.loading("Updating", { id: sonarId });
-    const res = await updateBlog({ id: blog?._id, updateData }).unwrap();
+    const res = await updateProject({ id: project?._id, updateData }).unwrap();
     console.log("Res: ", res);
+    if (res?.status) {
+      toast.success(res?.message, { id: sonarId });
+      startTransition(async () => {
+        await revalidateProjects();
+      });
+    }
   };
 
   return (
@@ -117,7 +149,7 @@ const UpdateBlog = ({ blog }: IProps) => {
       >
         <div className="form-container">
           <h2 className="text-4xl font-extrabold mb-6 text-teal-400 text-center">
-            Update Blog
+            Update Project
           </h2>
 
           <div className="max-w-10/12 mx-auto">
@@ -131,9 +163,10 @@ const UpdateBlog = ({ blog }: IProps) => {
                   className="w-[300px] h-[300px] object-cover rounded-lg shadow-lg cursor-pointer"
                   onClick={uploadImage}
                 />
+
                 <div className="absolute top-2 right-2 bg-green-500   rounded-full p-2  flex items-center justify-center">
                   <CreateIcon
-                    className="text-white text-xl cursor-pointer"
+                    className="  text-white text-xl cursor-pointer"
                     onClick={uploadImage}
                   />
                 </div>
@@ -141,43 +174,51 @@ const UpdateBlog = ({ blog }: IProps) => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-2 text-sm font-medium">
-                    Title
-                  </label>
-                  <input
-                    defaultValue={title}
-                    type="text"
-                    name="titlee"
-                    required
-                    className="w-full h-[65px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block mb-2 text-sm font-medium">
-                    Category
-                  </label>
-                  <select
-                    name="category"
-                    value={category}
-                    onChange={handleCategory}
-                    required
-                    className="w-full h-[65px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
-                  >
-                    <option value="" disabled>
-                      Select Category
-                    </option>
-                    {blogCategories.map((data, idx) => (
-                      <option key={idx} value={data}>
-                        {data}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium">Name</label>
+                <input
+                  type="text"
+                  name="projectName"
+                  required
+                  defaultValue={name}
+                  className="w-full h-[50px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
+                />
               </div>
 
+              <div>
+                <label className="block mb-2 text-sm font-medium">
+                  Live URL
+                </label>
+                <input
+                  type="url"
+                  name="liveurl"
+                  defaultValue={liveurl}
+                  required
+                  className="w-full h-[50px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium">
+                  Frontend Repository URL
+                </label>
+                <input
+                  type="url"
+                  name="frontendrepo"
+                  defaultValue={frontendrepo}
+                  className="w-full h-[50px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium">
+                  Backend Repository URL
+                </label>
+                <input
+                  type="url"
+                  name="backendrepo"
+                  defaultValue={backendrepo}
+                  className="w-full h-[50px] px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-teal-500"
+                />
+              </div>
               <div>
                 <label className="block mb-2 text-sm font-medium">
                   Description
@@ -196,12 +237,11 @@ const UpdateBlog = ({ blog }: IProps) => {
                 onChange={handleImageChange}
                 hidden
               />
-
               <button
                 type="submit"
                 className="w-full py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 focus:outline-none focus:ring focus:ring-teal-500"
               >
-                Update Blog
+                Update Project
               </button>
             </form>
           </div>
@@ -211,4 +251,4 @@ const UpdateBlog = ({ blog }: IProps) => {
   );
 };
 
-export default UpdateBlog;
+export default UpdateProject;

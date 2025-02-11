@@ -102,10 +102,12 @@ const AddProject = () => {
                 className="w-[300px] h-[300px] object-cover rounded-lg shadow-lg cursor-pointer"
                 onClick={uploadImage}
               />
-              <CreateIcon
-                className="absolute top-2 right-2 text-white cursor-pointer"
-                onClick={uploadImage}
-              />
+              <div className="absolute top-2 right-2 bg-green-500   rounded-full p-2  flex items-center justify-center">
+                <CreateIcon
+                  className="text-white text-xl cursor-pointer"
+                  onClick={uploadImage}
+                />
+              </div>
             </div>
           </div>
           <form onSubmit={handleSubmit} className="space-y-6">

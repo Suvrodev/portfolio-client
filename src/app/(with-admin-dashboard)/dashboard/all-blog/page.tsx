@@ -13,7 +13,7 @@ const AllBlogPage = async () => {
       <div className="min-h-screen bg-gray-100 p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {blogs?.map((blog: TBlog, idx: number) => (
-            <BlogCard key={idx} blog={blog} />
+            <BlogCard key={idx} blog={blog} admin={true} />
           ))}
         </div>
       </div>

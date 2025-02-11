@@ -7,22 +7,37 @@ import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
 import goLink from "@/utils/functions/goLink";
 import Image from "next/image";
 import { TProject } from "@/utils/types/globalTypes";
-import EditIcon from "@mui/icons-material/Edit";
+// import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDeleteProjectMutation } from "@/redux/apis/ProjectManagement/projectManagement";
 import { toast } from "sonner";
 import { sonarId } from "@/utils/sonarId";
 import { revalidateProjects } from "@/app/actions/revalidateProjects";
-import { useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
+// import UpdateProject from "../UpdateProject/UpdateProject";
+import dynamic from "next/dynamic";
+// import UpdateProject from "../UpdateProject/UpdateProject";
 interface IProps {
   project: TProject;
   admin?: boolean;
 }
 
-const ProjectBox = ({ project, admin = true }: IProps) => {
+const DynamicUpdateProject = dynamic(
+  () => import("../UpdateProject/UpdateProject"),
+  { ssr: false }
+);
+
+const ProjectBox = ({ project, admin = false }: IProps) => {
   const [deleteProject] = useDeleteProjectMutation();
   const { _id, liveurl, image, name, frontendrepo, backendrepo } = project;
   const [, startTransition] = useTransition();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   const handleDelete = async (id: string) => {
     console.log("Delete id: ", id);
@@ -47,9 +62,9 @@ const ProjectBox = ({ project, admin = true }: IProps) => {
     <div className="relative rounded-md p-2 border-[2px] projectBoxBG">
       {admin && (
         <div className="absolute top-3 right-3 flex gap-2 z-10">
-          <button className="p-2 bg-white/50 rounded-full hover:bg-white text-black transition">
-            <EditIcon className="" />
-          </button>
+          <div className=" bg-white/50 rounded-full hover:bg-white text-black transition">
+            <DynamicUpdateProject project={project} />
+          </div>
           <button
             className="p-2 bg-red-500 rounded-full hover:bg-red-600 transition"
             onClick={() => handleDelete(_id)}
