@@ -9,14 +9,40 @@ import Image from "next/image";
 import { TProject } from "@/utils/types/globalTypes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-
+import { useDeleteProjectMutation } from "@/redux/apis/ProjectManagement/projectManagement";
+import { toast } from "sonner";
+import { sonarId } from "@/utils/sonarId";
+import { revalidateProjects } from "@/app/actions/revalidateProjects";
+import { useTransition } from "react";
 interface IProps {
   project: TProject;
   admin?: boolean;
 }
 
 const ProjectBox = ({ project, admin = true }: IProps) => {
-  const { liveurl, image, name, frontendrepo, backendrepo } = project;
+  const [deleteProject] = useDeleteProjectMutation();
+  const { _id, liveurl, image, name, frontendrepo, backendrepo } = project;
+  const [, startTransition] = useTransition();
+
+  const handleDelete = async (id: string) => {
+    console.log("Delete id: ", id);
+    try {
+      toast.loading("Deleting...", { id: sonarId });
+      const res = await deleteProject(id).unwrap();
+      console.log("Res: ", res);
+      if (res?.status) {
+        toast.success(res?.message, { id: sonarId });
+
+        // ✅ Properly revalidate projects after deletion
+        startTransition(async () => {
+          await revalidateProjects();
+        });
+      }
+    } catch {
+      toast.error("Failed to delete project", { id: sonarId });
+    }
+  };
+
   return (
     <div className="relative rounded-md p-2 border-[2px] projectBoxBG">
       {admin && (
@@ -24,7 +50,10 @@ const ProjectBox = ({ project, admin = true }: IProps) => {
           <button className="p-2 bg-white/50 rounded-full hover:bg-white text-black transition">
             <EditIcon className="" />
           </button>
-          <button className="p-2 bg-red-500 rounded-full hover:bg-red-600 transition">
+          <button
+            className="p-2 bg-red-500 rounded-full hover:bg-red-600 transition"
+            onClick={() => handleDelete(_id)}
+          >
             <DeleteIcon className="text-white" />
           </button>
         </div>

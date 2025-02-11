@@ -3,7 +3,9 @@ import { TProject } from "@/utils/types/globalTypes";
 import React from "react";
 
 const AllProjectPage = async () => {
-  const res = await fetch("http://localhost:5000/api/project/");
+  const res = await fetch("http://localhost:5000/api/project/", {
+    next: { tags: ["projects"] }, // ✅ Enables auto-revalidation
+  });
   const data = await res.json();
   // console.log("Data: ", data);
   const projects = data?.data;
