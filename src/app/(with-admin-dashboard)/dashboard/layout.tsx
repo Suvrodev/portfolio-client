@@ -7,6 +7,7 @@ import { Tuser } from "@/utils/types/globalTypes";
 import Link from "next/link";
 import { dashboardItems } from "@/utils/Array/dashboardItems";
 import Logout from "@/components/Shared/Logout/Logout";
+import DashboardItem from "@/components/Admin/DashboardItem/DashboardItem";
 
 interface Iprops {
   children: ReactNode;
@@ -58,15 +59,7 @@ const layout = async ({ children }: Iprops) => {
             </div>
 
             <div className="flex flex-col gap-4 my-4">
-              {dashboardItems.map((data) => (
-                <Link
-                  key={data?.path}
-                  href={data?.path}
-                  className={`dashboardLink text-lg font-medium py-2 px-4 rounded-lg`}
-                >
-                  {data?.text}
-                </Link>
-              ))}
+              <DashboardItem />
 
               <div>
                 <Logout />
