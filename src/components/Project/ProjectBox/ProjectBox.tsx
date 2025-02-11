@@ -1,3 +1,4 @@
+"use client";
 import "./ProjectBox.css";
 
 import chromeImage from "@/assets/chrome/chrome.png";
@@ -5,11 +6,29 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
 import goLink from "@/utils/functions/goLink";
 import Image from "next/image";
+import { TProject } from "@/utils/types/globalTypes";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-const ProjectBox = ({ project }) => {
-  const { id, client, image, name, server, url } = project;
+interface IProps {
+  project: TProject;
+  admin?: boolean;
+}
+
+const ProjectBox = ({ project, admin = true }: IProps) => {
+  const { liveurl, image, name, frontendrepo, backendrepo } = project;
   return (
-    <div className="rounded-md p-2 border-[2px] projectBoxBG">
+    <div className="relative rounded-md p-2 border-[2px] projectBoxBG">
+      {admin && (
+        <div className="absolute top-3 right-3 flex gap-2 z-10">
+          <button className="p-2 bg-white/50 rounded-full hover:bg-white text-black transition">
+            <EditIcon className="" />
+          </button>
+          <button className="p-2 bg-red-500 rounded-full hover:bg-red-600 transition">
+            <DeleteIcon className="text-white" />
+          </button>
+        </div>
+      )}
       <div className="flex flex-col items-center">
         <div className="relative w-full h-60 overflow-hidden border-2 border-gray-300 rounded">
           <Image
@@ -34,7 +53,7 @@ const ProjectBox = ({ project }) => {
                     width={25}
                     height={25}
                     className="w-[25px] h-[20px]"
-                    onClick={() => goLink(url)}
+                    onClick={() => goLink(liveurl)}
                   />
                 </span>
               </div>
@@ -43,14 +62,14 @@ const ProjectBox = ({ project }) => {
                 <span className="w-48 h-48 rounded rotate-[-40deg] bg-purple-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                 <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white flex gap-2 justify-center">
                   {/* <span className="font-bold text-base">Client </span> */}
-                  <GitHubIcon onClick={() => goLink(client)} />
+                  <GitHubIcon onClick={() => goLink(frontendrepo)} />
                 </span>
               </div>
               <div className="relative  rounded-lg inline-flex items-center justify-start px-7 mt-5 py-1 overflow-hidden font-medium transition-all bg-gradient-to-r from-emerald-500 to-blue-500 hover:bg-white group">
                 <span className="w-48 h-48 rounded rotate-[-40deg] bg-purple-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                 <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white flex gap-2 justify-center">
                   {/* <span className="font-bold text-base">Server</span> */}
-                  <BrowserUpdatedIcon onClick={() => goLink(server)} />
+                  <BrowserUpdatedIcon onClick={() => goLink(backendrepo)} />
                 </span>
               </div>
             </div>

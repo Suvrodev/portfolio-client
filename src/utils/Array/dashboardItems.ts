@@ -13,7 +13,7 @@ export const dashboardItems = [
   },
   {
     text: "All Project",
-    path: "/dashboard/project",
+    path: "/dashboard/all-project",
   },
   {
     text: "Add Blog",

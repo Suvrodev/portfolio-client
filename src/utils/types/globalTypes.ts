@@ -33,7 +33,18 @@ export type TBlog = {
   updatedAt: string;
   __v: number;
 };
-
+export type TProject = {
+  _id: string;
+  name: string;
+  liveurl: string;
+  frontendrepo: string;
+  backendrepo: string;
+  image: string;
+  descriptions: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
 export type TMessage = {
   _id: string;
   name: string;
