@@ -1,17 +1,26 @@
 "use client";
-
+import notFoundLottie from "@/assets/lottie/notfound.json";
+import Lottie from "lottie-react";
 import Link from "next/link";
 
 const NotFoundPage = () => {
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-gradient-to-r from-red-600 to-red-800 text-white">
-      <div className="text-center p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg">
-        <h1 className="text-6xl font-bold mb-4">404</h1>
-        <p className="text-lg mb-6">
-          The page you are looking for does not exist.
+    <div className="flex h-screen w-full items-center justify-center bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700">
+      <div className="text-center p-8 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 flex flex-col items-center">
+        {/* Lottie Animation */}
+        <div className="w-72 h-72 mb-8">
+          <Lottie animationData={notFoundLottie} loop={true} />
+        </div>
+
+        {/* 404 Text */}
+        <h1 className="text-7xl font-bold mb-4 text-white">404</h1>
+        <p className="text-xl text-gray-200 mb-8">
+          Oops! The page you are looking for does not exist.
         </p>
+
+        {/* Go Home Button */}
         <Link href="/">
-          <button className="px-6 py-3 bg-white text-red-600 font-semibold rounded-full shadow-md hover:bg-gray-200 transition-all">
+          <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all">
             Go Home
           </button>
         </Link>
