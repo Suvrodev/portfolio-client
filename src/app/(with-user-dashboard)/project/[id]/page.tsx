@@ -8,8 +8,6 @@ interface IProps {
 }
 const ProjectDetailPage = async ({ params }: IProps) => {
   const { id } = params;
-  console.log("Params: ", params);
-  console.log("id: ", id);
   const res = await fetch(`${process.env.BASE_URL}/project/${id}`, {
     cache: "no-store",
   });

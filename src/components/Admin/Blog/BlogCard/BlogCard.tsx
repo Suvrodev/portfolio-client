@@ -50,7 +50,7 @@ const BlogCard = ({ blog, admin = false }: IProps) => {
       console.log("in admin or Home");
       return;
     }
-    router.push(`/project/${_id}`);
+    router.push(`/blog/${_id}`);
   };
 
   return (
