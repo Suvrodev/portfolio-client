@@ -2,7 +2,9 @@ import BlogCard from "@/components/Admin/Blog/BlogCard/BlogCard";
 import { TBlog } from "@/utils/types/globalTypes";
 
 const AllBlogPage = async () => {
-  const res = await fetch("http://localhost:5000/api/blog/");
+  const res = await fetch("http://localhost:5000/api/blog/", {
+    next: { tags: ["blogs"] },
+  });
   const data = await res.json();
   // console.log("Data: ", data);
   const blogs = data?.data;

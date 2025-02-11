@@ -3,11 +3,13 @@ import { useDeleteBlogMutation } from "@/redux/apis/BlogManagement/blogmanagemen
 
 import { TBlog } from "@/utils/types/globalTypes";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import { sonarId } from "@/utils/sonarId";
 import { toast } from "sonner";
 import { Trash2 } from "lucide-react";
 import UpdateBlog from "../UpdateBlog/UpdateBlog";
+import { revalidateProjects } from "@/app/actions/revalidateProjects";
+import { formatDate } from "@/utils/functions/formatDate";
 
 interface IProps {
   blog: TBlog;
@@ -15,14 +17,14 @@ interface IProps {
 }
 const BlogCard = ({ blog, admin = false }: IProps) => {
   const [deleteBlog] = useDeleteBlogMutation();
-  const { _id, title, content, image, category } = blog;
+  const { _id, title, image, category } = blog;
 
-  const [trimmedContent, setTrimedContent] = useState("");
+  const [trimmedTitle, setTrimmedTitle] = useState("");
+
   useEffect(() => {
-    const cutContent =
-      content.length > 50 ? content.substring(0, 50) + "..." : content;
-    setTrimedContent(cutContent);
-  }, [content]);
+    const result = title.length > 50 ? title.substring(0, 50) + "..." : title;
+    setTrimmedTitle(result);
+  }, [title]);
 
   const handleDelete = async (id: string) => {
     console.log(`Deleting blog with ID: ${id}`);
@@ -32,6 +34,9 @@ const BlogCard = ({ blog, admin = false }: IProps) => {
       console.log("Res: ", res);
       if (res?.status) {
         toast.success(res?.message, { id: sonarId });
+        startTransition(async () => {
+          await revalidateProjects();
+        });
       }
     } catch {}
   };
@@ -54,18 +59,23 @@ const BlogCard = ({ blog, admin = false }: IProps) => {
 
       {/* Blog Content */}
       <div className="p-4">
-        <h2 className="text-xl h-[90px] font-bold text-gray-800 mb-2">
-          {title}
+        <h2 className="text-[16px] h-[70px] font-bold text-gray-800 mb-2 ">
+          {trimmedTitle}
         </h2>
-        {/* <div className="mb-4 h-12 text-sm text-gray-600 overflow-hidden">
-          {content.length > 50 ? content.substring(0, 50) + "..." : content}
-        </div> */}
-        <div dangerouslySetInnerHTML={{ __html: trimmedContent }} />
+
         {/* Category Section */}
         <div className="mt-2 w-50">
-          <span className="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
-            {category}
-          </span>
+          <div className="flex flex-col gap-2 items-start ">
+            <span className="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+              {category}
+            </span>
+            <div className="flex gap-x-2 items-center">
+              <span className="bg-green-500 rounded-md py-1 px-4 text-white">
+                Date:
+              </span>
+              <span>{formatDate(blog?.createdAt)}</span>
+            </div>
+          </div>
         </div>
       </div>
 

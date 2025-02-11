@@ -3,7 +3,14 @@ import { Modal } from "antd";
 import { TBlog } from "@/utils/types/globalTypes";
 import UpdateIcon from "@mui/icons-material/Update";
 import CreateIcon from "@mui/icons-material/Create";
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  startTransition,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { toast } from "sonner";
 import { sonarId } from "@/utils/sonarId";
 import axios from "axios";
@@ -11,6 +18,7 @@ import Image from "next/image";
 import { blogCategories } from "@/utils/Array/blogCategories";
 import TextEditor from "../../TextEditor/TextEditor";
 import { useUpdateBlogMutation } from "@/redux/apis/BlogManagement/blogmanagement";
+import { revalidateProjects } from "@/app/actions/revalidateProjects";
 
 const imageHostingUrl =
   "https://api.cloudinary.com/v1_1/dixfkupof/image/upload";
@@ -76,6 +84,9 @@ const UpdateBlog = ({ blog }: IProps) => {
 
           if (res?.status) {
             toast.success("Image Updated Successfully");
+            startTransition(async () => {
+              await revalidateProjects();
+            });
           }
         }
       } catch (error) {
@@ -97,6 +108,12 @@ const UpdateBlog = ({ blog }: IProps) => {
     toast.loading("Updating", { id: sonarId });
     const res = await updateBlog({ id: blog?._id, updateData }).unwrap();
     console.log("Res: ", res);
+    if (res?.status) {
+      toast.success("Update Blog successfully", { id: sonarId });
+      startTransition(async () => {
+        await revalidateProjects();
+      });
+    }
   };
 
   return (
