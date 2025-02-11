@@ -13,7 +13,7 @@ const layout = ({ children }: IProps) => {
       <div className="w-[20%] hidden md:block h-[100vh] sticky top-0 ">
         <UserDashboard />
       </div>
-      <div className="w-full md:w-[80%] bg-[#333333] ">
+      <div className="w-full md:w-[80%] bg-[#1c2854] ">
         <div className="md:hidden sticky top-0 z-50">
           <MobileHeader />
         </div>

@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions/authOptions";
 import { Tuser } from "@/utils/types/globalTypes";
 import Link from "next/link";
-import { dashboardItems } from "@/utils/Array/dashboardItems";
 import Logout from "@/components/Shared/Logout/Logout";
 import DashboardItem from "@/components/Admin/DashboardItem/DashboardItem";
 
