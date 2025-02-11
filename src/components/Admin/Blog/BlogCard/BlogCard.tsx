@@ -10,6 +10,7 @@ import { Trash2 } from "lucide-react";
 import UpdateBlog from "../UpdateBlog/UpdateBlog";
 import { revalidateProjects } from "@/app/actions/revalidateProjects";
 import { formatDate } from "@/utils/functions/formatDate";
+import { usePathname, useRouter } from "next/navigation";
 
 interface IProps {
   blog: TBlog;
@@ -18,6 +19,9 @@ interface IProps {
 const BlogCard = ({ blog, admin = false }: IProps) => {
   const [deleteBlog] = useDeleteBlogMutation();
   const { _id, title, image, category } = blog;
+
+  const path = usePathname();
+  const router = useRouter();
 
   const [trimmedTitle, setTrimmedTitle] = useState("");
 
@@ -41,10 +45,19 @@ const BlogCard = ({ blog, admin = false }: IProps) => {
     } catch {}
   };
 
+  const handleGoBlogDetail = (_id: string) => {
+    if (path != "/blog") {
+      console.log("in admin or Home");
+      return;
+    }
+    router.push(`/project/${_id}`);
+  };
+
   return (
     <div
       className="relative bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
       style={{ maxWidth: "300px" }}
+      onClick={() => handleGoBlogDetail(_id)}
     >
       {/* Blog Image */}
       <div className="w-full h-48 ">
