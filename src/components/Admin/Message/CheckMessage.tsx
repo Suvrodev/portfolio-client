@@ -49,9 +49,9 @@ const CheckMessage = () => {
   return (
     <div className=" h-screen  rounded-xl ">
       <h1 className="text-2xl font-bold text-white">Check Message</h1>
-      <div className="flex items-start bg-black h-screen rounded-md max-w-[1400px]">
+      <div className="flex flex-col-reverse md:flex-wrap items-start bg-black h-screen rounded-md max-w-[1400px]">
         {/* Conversation Part */}
-        <div className="w-[25%] bg-green-600 flex flex-col h-screen overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-transparent rounded-md">
+        <div className="w-full md:w-[25%] bg-green-600 flex flex-col h-screen overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-transparent rounded-md">
           {messages?.length == 0 && (
             <p className="text-red-600 mt-10 text-xl font-bold text-center">
               No Message
@@ -89,7 +89,7 @@ const CheckMessage = () => {
         </div>
 
         {/* Message Part */}
-        <div className="w-[85%] text-white bg-black flex flex-col justify-start items-start p-4  h-full rounded-md">
+        <div className="w-full md:w-[85%] text-white bg-[#0A192F] flex flex-col justify-start items-start p-4  h-full rounded-md">
           <div className="flex gap-2 rounded-md">
             <p className="italic">Email:</p>
             <p className="text-green-500 font-bold">
@@ -109,3 +109,10 @@ const CheckMessage = () => {
 };
 
 export default CheckMessage;
+
+// bg color code in dark
+// 'deep-navy': '#0A192F',
+// 'dark-charcoal': '#1F1F1F',
+// 'rich-burgundy': '#2E0F15',
+// 'deep-forest': '#0D1F1C',
+// 'midnight-purple': '#1A1A2E',

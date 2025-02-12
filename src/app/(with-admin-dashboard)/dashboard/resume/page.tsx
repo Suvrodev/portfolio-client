@@ -4,7 +4,8 @@ import axios from "axios";
 import React, { FormEvent, useState } from "react";
 import { toast } from "sonner";
 
-const pdfHostingUrl = "https://api.cloudinary.com/v1_1/dixfkupof/upload";
+// const pdfHostingUrl = "https://api.cloudinary.com/v1_1/dixfkupof/upload";
+const pdfHostingUrl = "https://api.cloudinary.com/v1_1/dixfkupof/raw/upload";
 
 const ResumePage = () => {
   const [resumeLink, setResumeLink] = useState<string | null>(null);
@@ -30,9 +31,17 @@ const ResumePage = () => {
       const response = await axios.post(pdfHostingUrl, formData);
       console.log("Response: ", response);
       if (response.data?.secure_url) {
-        setResumeLink(response.data.secure_url);
+        // setResumeLink(response.data.secure_url);
+        // toast.success("Resume uploaded successfully!", { id: sonarId });
+        // console.log("Link: ", response.data.secure_url);
+
+        const forcedDownloadUrl = response.data.secure_url.replace(
+          "/raw/upload/",
+          "/raw/upload/fl_attachment/"
+        );
+        setResumeLink(forcedDownloadUrl);
         toast.success("Resume uploaded successfully!", { id: sonarId });
-        console.log("Link: ", response.data.secure_url);
+        console.log("Download Link: ", forcedDownloadUrl);
       } else {
         toast.error("Failed to upload resume.");
       }

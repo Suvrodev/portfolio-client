@@ -87,7 +87,7 @@ const AddBlog = () => {
       // console.log("Image Upload response: ", response);
       const imageResponse = await axios.post(imageHostingUrl, formData);
 
-      // console.log("Uploaded image URL:", res?.data?.url);
+      console.log("Uploaded image response:", imageResponse);
 
       if (imageResponse?.data?.url) {
         const imageUrl = imageResponse?.data?.url; // Get the image URL
