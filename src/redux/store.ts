@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./apis/BaseApi/baseApi";
+import resumeReducer from "./features/resumeSlice";
 
 export const store = configureStore({
   reducer: {
+    resume: resumeReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleWare) =>

@@ -60,3 +60,7 @@ export type Tuser = {
   email: string | null;
   image: string | null;
 };
+export type TResume = {
+  _id: string;
+  link: string;
+};

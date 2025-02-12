@@ -1,20 +1,19 @@
 "use client";
 
-import LoadingComponent from "@/components/Shared/LoadingComponent/LoadingComponent";
-import { useGetResumeQuery } from "@/redux/apis/Resume/resumeManagement";
+import DownloadResume from "@/components/Shared/DownloadResume/DownloadResume";
+import { useUpdateResumeMutation } from "@/redux/apis/Resume/resumeManagement";
+import { useAppSelector } from "@/redux/hooks";
 import { sonarId } from "@/utils/sonarId";
 import axios from "axios";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent } from "react";
 import { toast } from "sonner";
 // const pdfHostingUrl = "https://api.cloudinary.com/v1_1/dixfkupof/upload";
 const pdfHostingUrl = "https://api.cloudinary.com/v1_1/dixfkupof/raw/upload";
 
 const ResumeComponent = () => {
-  const { data, isLoading } = useGetResumeQuery(undefined);
-  const resumeArray = data?.data;
-  const resume = resumeArray && resumeArray[0];
-  console.log("Resume: ", resume);
-  const [resumeLink, setResumeLink] = useState<string | null>(null);
+  const { resume } = useAppSelector((state) => state?.resume);
+  console.log("Global Resume: ", resume);
+  const [updateResume] = useUpdateResumeMutation();
 
   const handleResumeUpload = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,9 +44,21 @@ const ResumeComponent = () => {
           "/raw/upload/",
           "/raw/upload/fl_attachment/"
         );
-        setResumeLink(forcedDownloadUrl);
+
         toast.success("Resume uploaded successfully!", { id: sonarId });
         console.log("Download Link: ", forcedDownloadUrl);
+
+        toast.loading("Update Loading", { id: sonarId });
+        const updateData = { link: forcedDownloadUrl };
+        console.log("Resume data for update: ", updateData);
+        const res = await updateResume({
+          _id: resume?._id,
+          updateData,
+        }).unwrap();
+        console.log("Res:::::::::::::::::::: ", res);
+        if (res?.status) {
+          toast.success("Resume Updated Successfully", { id: sonarId });
+        }
       } else {
         toast.error("Failed to upload resume.");
       }
@@ -57,59 +68,45 @@ const ResumeComponent = () => {
     }
   };
 
-  const handleDownload = () => {
-    if (resumeLink) {
-      const link = document.createElement("a");
-      link.href = `${resumeLink}?dl=Resume.pdf`; // Force download
-      link.setAttribute("download", "Resume.pdf");
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } else {
-      toast.error("No resume link available.");
-    }
-  };
-
-  if (isLoading) {
-    return <LoadingComponent />;
-  }
-
   return (
-    <div>
-      <div className="h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-            Upload Resume
-          </h1>
-          <form onSubmit={handleResumeUpload} className="space-y-4">
-            <input
-              type="file"
-              name="resume"
-              accept="application/pdf"
-              className="w-full p-2 border border-gray-300 rounded-md"
-            />
-            <button
-              type="submit"
-              className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            >
-              Upload
-            </button>
-          </form>
-
-          {resumeLink && (
-            <div className="mt-6 text-center">
+    <div className="min-h-screen bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 p-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Upload Section */}
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
+            <h1 className="text-3xl font-bold text-white mb-6 text-center">
+              Upload New Resume
+            </h1>
+            <form onSubmit={handleResumeUpload} className="space-y-6">
+              <input
+                type="file"
+                name="resume"
+                accept="application/pdf"
+                className="w-full p-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+              />
               <button
-                onClick={handleDownload}
-                className="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                type="submit"
+                className="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all transform hover:scale-105"
               >
-                Download Resume
+                Upload
               </button>
-            </div>
-          )}
+            </form>
+          </div>
+
+          {/* Resume Section */}
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl flex flex-col justify-center items-center">
+            <h1 className="text-3xl font-bold text-white mb-6 text-center">
+              Suvrodeb Resume
+            </h1>
+            {/* <button
+              onClick={handleDownload}
+              className="w-full py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg hover:from-green-500 hover:to-blue-600 transition-all transform hover:scale-105"
+            >
+              Download Resume
+            </button> */}
+            <DownloadResume />
+          </div>
         </div>
-      </div>
-      <div>
-        <p>Show Resume</p>
       </div>
     </div>
   );
