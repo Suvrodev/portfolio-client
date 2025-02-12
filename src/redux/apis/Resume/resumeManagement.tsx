@@ -1,51 +1,51 @@
 import { baseApi } from "../BaseApi/baseApi";
 
-const messageManagement = baseApi.injectEndpoints({
+const resumeManagement = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    sendMessage: builder.mutation({
+    addResume: builder.mutation({
       query: (data) => {
         console.log("In redux: ", data);
         return {
-          url: "/email",
+          url: "/resume",
           method: "POST",
           body: data,
         };
       },
     }),
-    getMessage: builder.query({
+    getResume: builder.query({
       query: () => {
         return {
-          url: "/email",
+          url: "/resume",
           method: "GET",
         };
       },
-      providesTags: ["message"],
+      providesTags: ["resume"],
     }),
-    delteMessage: builder.mutation({
+    deleteResume: builder.mutation({
       query: (id: string) => {
         return {
-          url: `/email/${id}`,
+          url: `/resume/${id}`,
           method: "DELETE",
         };
       },
-      invalidatesTags: ["message"],
+      invalidatesTags: ["resume"],
     }),
-    updateMessage: builder.mutation({
+    updateResume: builder.mutation({
       query: ({ _id, updateData }) => {
         return {
-          url: `/email/update/${_id}`,
+          url: `/resume/update/${_id}`,
           method: "PATCH",
           body: updateData,
         };
       },
-      invalidatesTags: ["message"],
+      invalidatesTags: ["resume"],
     }),
   }),
 });
 
 export const {
-  useSendMessageMutation,
-  useGetMessageQuery,
-  useDelteMessageMutation,
-  useUpdateMessageMutation,
-} = messageManagement;
+  useAddResumeMutation,
+  useGetResumeQuery,
+  useDeleteResumeMutation,
+  useUpdateResumeMutation,
+} = resumeManagement;
