@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 const DashboardItem = () => {
   const path = usePathname();
-  console.log("path: ", path);
+  // console.log("path: ", path);
   return (
     <div className="flex flex-col gap-4 my-4">
       {dashboardItems.map((data) => (

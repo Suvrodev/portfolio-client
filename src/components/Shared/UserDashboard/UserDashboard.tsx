@@ -6,6 +6,9 @@ import logoImage from "@/assets/HeaderImage/myLogo.png";
 import goLink from "@/utils/functions/goLink";
 import sendEmail from "@/utils/functions/sendEmail";
 import goCall from "@/utils/functions/goCall";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
 import {
   Home as HomeIcon,
   Info as InfoIcon,
@@ -159,6 +162,16 @@ const UserDashboard = () => {
           </div>
           <div onClick={() => goLink("https://x.com/suvrodev1408")}>
             <FaTwitter />
+          </div>
+          <div
+            onClick={() =>
+              goLink("https://www.linkedin.com/in/suvrodeb-howlader/")
+            }
+          >
+            <LinkedInIcon />
+          </div>
+          <div onClick={() => goLink("https://github.com/Suvrodev")}>
+            <GitHubIcon />
           </div>
           <div onClick={() => goLink("https://Wa.me/+8801518748081")}>
             <FaWhatsapp />

@@ -7,14 +7,17 @@ import { Tuser } from "@/utils/types/globalTypes";
 import Link from "next/link";
 import Logout from "@/components/Shared/Logout/Logout";
 import DashboardItem from "@/components/Admin/DashboardItem/DashboardItem";
+// import { useAppSelector } from "@/redux/hooks";
 
 interface Iprops {
   children: ReactNode;
 }
 const layout = async ({ children }: Iprops) => {
+  // const {user}=useAppSelector(state=>state?.user)
   const session = await getServerSession(authOptions);
   // console.log("Session from dashboard", session);
   const user = session?.user as Tuser;
+  console.log("user: ", user);
 
   return (
     <div>
