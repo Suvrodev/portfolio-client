@@ -64,9 +64,3 @@ export type TResume = {
   _id: string;
   link: string;
 };
-
-export type TUser = {
-  name: string;
-  email: string;
-  image: string;
-};

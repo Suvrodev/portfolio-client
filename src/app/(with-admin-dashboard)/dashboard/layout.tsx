@@ -64,7 +64,7 @@ const layout = async ({ children }: Iprops) => {
               <DashboardItem />
 
               <div>
-                <Logout />
+                <Logout admin={true} />
               </div>
             </div>
           </ul>

@@ -17,7 +17,7 @@ const ProjectBox = ({ project }: IProps) => {
   const { _id, liveurl, image, name, frontendrepo, backendrepo } = project;
   const path = usePathname();
   const router = useRouter();
-  console.log("Path: ", path);
+  // console.log("Path: ", path);
   const handleGoProjectDetail = (_id: string) => {
     if (path != "/project") {
       return;

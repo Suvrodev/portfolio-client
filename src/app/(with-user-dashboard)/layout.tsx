@@ -4,14 +4,21 @@ import MobileHeader from "@/components/Shared/MobileHeader/MobileHeader";
 import GotoTop from "@/components/Shared/GotoTop/GotoTop";
 import SocialIconInBody from "@/components/Shared/SocialIconInBody/SocialIconInBody";
 import UserDashboard from "@/components/Shared/UserDashboard/UserDashboard";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/authOptions/authOptions";
+import { Tuser } from "@/utils/types/globalTypes";
 interface IProps {
   children: ReactNode;
 }
-const layout = ({ children }: IProps) => {
+const layout = async ({ children }: IProps) => {
+  const session = await getServerSession(authOptions);
+  // console.log("Session from dashboard", session);
+  const user = session?.user as Tuser;
+  console.log("user in Sidebar: ", user);
   return (
     <div className="flex">
       <div className="w-[20%] hidden md:block h-[100vh] sticky top-0 ">
-        <UserDashboard />
+        <UserDashboard user={user} />
       </div>
       <div className="w-full md:w-[80%] bg-[#1c2854] ">
         <div className="md:hidden sticky top-0 z-50">

@@ -4,8 +4,13 @@ import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 
 import DownloadResume from "../../DownloadResume/DownloadResume";
+import { Tuser } from "@/utils/types/globalTypes";
+import Logout from "../../Logout/Logout";
 
-const DashboardLogin = () => {
+interface IProps {
+  user: Tuser;
+}
+const DashboardLogin = ({ user }: IProps) => {
   const handleGoogleSignIn = () => {
     console.log("Google");
     signIn("google", { callbackUrl: "/dashboard" });
@@ -14,15 +19,19 @@ const DashboardLogin = () => {
   return (
     <div>
       {/* Download CV & Google Sign In */}
-      <div className="flex flex-col gap-4 items-center mt-6">
+      <div className="flex flex-col gap-4 items-center justify-center mt-6  w-full px-4">
         <DownloadResume />
-        <button
-          onClick={() => handleGoogleSignIn()}
-          className="flex items-center gap-2 btn bg-yellow-400 text-white border-0  rounded-lg font-bold shadow-md hover:bg-yellow-500 transition duration-300"
-        >
-          <FaGoogle />
-          Sign in with Google
-        </button>
+        {user === undefined ? (
+          <button
+            onClick={() => handleGoogleSignIn()}
+            className="flex items-center gap-2 btn bg-yellow-400 text-white border-0 rounded-lg font-bold shadow-md hover:bg-yellow-500 transition duration-300"
+          >
+            <FaGoogle />
+            Sign in with Google
+          </button>
+        ) : (
+          <Logout admin={false} />
+        )}
       </div>
     </div>
   );

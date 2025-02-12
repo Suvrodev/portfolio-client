@@ -42,7 +42,7 @@ const DownloadResume = () => {
   return (
     <button
       onClick={handleDownload}
-      className="w-full py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg hover:from-green-500 hover:to-blue-600 transition-all transform hover:scale-105"
+      className="w-full py-3 px-4 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-lg hover:from-green-500 hover:to-blue-600 transition-all transform hover:scale-105"
     >
       Download Resume
     </button>

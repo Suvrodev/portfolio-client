@@ -18,8 +18,11 @@ import {
 import Image from "next/image";
 import DashboardLogin from "./DashboardLogin/DashboardLogin";
 import Link from "next/link";
-
-const UserDashboard = () => {
+import { Tuser } from "@/utils/types/globalTypes";
+interface IProps {
+  user: Tuser;
+}
+const UserDashboard = ({ user }: IProps) => {
   return (
     // <div className="sticky top-0 bg-yellow-400">
     //   {/* <div className="relative top-0 bg-[#F3F9FF] h-full w-full flex flex-col items-center text-black"> */}
@@ -153,7 +156,7 @@ const UserDashboard = () => {
           ))}
         </div>
         <div className="z-40">
-          <DashboardLogin />
+          <DashboardLogin user={user} />
         </div>
         {/* Social Icons */}
         <div className="flex gap-4 items-center mt-8 z-40">
