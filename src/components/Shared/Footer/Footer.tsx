@@ -11,6 +11,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import goLink from "@/utils/functions/goLink";
 import goCall from "@/utils/functions/goCall";
 import sendEmail from "@/utils/functions/sendEmail";
+import DownloadResume from "../DownloadResume/DownloadResume";
 const Footer = () => {
   return (
     <div>
@@ -43,16 +44,9 @@ const Footer = () => {
                 <FaWhatsapp />
               </span>
             </div>
-            <button
-              className="btn btn-success text-white mt-4"
-              onClick={() =>
-                goLink(
-                  "https://drive.google.com/drive/u/0/folders/1bOVEqEcZB69GKBeRsge35y0AUeBiY6iy"
-                )
-              }
-            >
-              Download CV
-            </button>
+            <div className=" mt-4 w-8/12">
+              <DownloadResume />
+            </div>
           </div>
 
           <div className="text-white">
