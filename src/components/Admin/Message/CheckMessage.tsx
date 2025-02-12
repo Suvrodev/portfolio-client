@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Trash } from "lucide-react";
 import { toast } from "sonner";
 import { sonarId } from "@/utils/sonarId";
+import LoadingComponent from "@/components/Shared/LoadingComponent/LoadingComponent";
 
 const CheckMessage = () => {
   const [deleteMessage] = useDelteMessageMutation();
@@ -43,13 +44,13 @@ const CheckMessage = () => {
     }
   };
   if (isLoading) {
-    return <p>Loading</p>;
+    return <LoadingComponent />;
   }
 
   return (
-    <div className=" h-screen  rounded-xl ">
+    <div className=" h-screen rounded-xl  ">
       <h1 className="text-2xl font-bold text-white">Check Message</h1>
-      <div className="flex flex-col-reverse md:flex-wrap items-start bg-black h-screen rounded-md max-w-[1400px]">
+      <div className="flex flex-col-reverse md:flex-wrap items-start bg-black h-screen rounded-md max-w-[1000px] mt-4 ">
         {/* Conversation Part */}
         <div className="w-full md:w-[25%] bg-green-600 flex flex-col h-screen overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-transparent rounded-md">
           {messages?.length == 0 && (
@@ -60,7 +61,7 @@ const CheckMessage = () => {
           {messages?.map((message: TMessage, idx: number) => (
             <div
               key={idx}
-              className="bg-white py-4 pl-2 pr-0 border border-black flex items-center justify-center"
+              className="bg-white py-4 pl-2 pr-0 border border-black flex items-center justify-center cursor-pointer"
             >
               <div
                 className="flex flex-col gap-1 text-black w-[80%] "

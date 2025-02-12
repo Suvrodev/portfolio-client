@@ -23,8 +23,8 @@ export const dashboardItems = [
     text: "All Blog",
     path: "/dashboard/all-blog",
   },
-  // {
-  //   text: "About Page",
-  //   path: "/admin-dashboard/create-about",
-  // },
+  {
+    text: "Resume",
+    path: "/dashboard/resume",
+  },
 ];
