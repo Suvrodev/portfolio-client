@@ -2,13 +2,13 @@ import Image from "next/image";
 import React from "react";
 
 interface IProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const BlogDetailPage = async ({ params }: IProps) => {
-  const { id } = params;
+  const id = (await params)?.id;
   const res = await fetch(`${process.env.BASE_URL}/blog/${id}`, {
     cache: "no-store",
   });

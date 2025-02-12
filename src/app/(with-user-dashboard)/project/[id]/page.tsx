@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 
 interface IProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 const ProjectDetailPage = async ({ params }: IProps) => {
-  const id = params?.id;
+  const id = (await params)?.id;
   const res = await fetch(`${process.env.BASE_URL}/project/${id}`, {
     cache: "no-store",
   });
