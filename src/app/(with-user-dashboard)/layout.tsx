@@ -14,7 +14,7 @@ const layout = async ({ children }: IProps) => {
   const session = await getServerSession(authOptions);
   // console.log("Session from dashboard", session);
   const user = session?.user as Tuser;
-  console.log("user in Sidebar: ", user);
+  // console.log("user in Sidebar: ", user);
   return (
     <div className="flex">
       <div className="w-[20%] hidden md:block h-[100vh] sticky top-0 ">

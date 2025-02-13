@@ -56,7 +56,6 @@ const BlogCard = ({ blog, admin = false }: IProps) => {
   return (
     <div
       className="relative bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-      style={{ maxWidth: "300px" }}
       onClick={() => handleGoBlogDetail(_id)}
     >
       {/* Blog Image */}

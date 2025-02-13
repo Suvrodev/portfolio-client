@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const AllProjectPage = async () => {
-  const res = await fetch("http://localhost:5000/api/project/", {
+  const res = await fetch(`${process.env.BASE_URL}/project/`, {
     next: { tags: ["projects"] }, // ✅ Enables auto-revalidation
   });
   const data = await res.json();

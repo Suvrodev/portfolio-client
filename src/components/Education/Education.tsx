@@ -15,16 +15,16 @@ const Education = () => {
   }, []);
 
   return (
-    <div className="w-full px-4 md:px-8 lg:px-16 xl:px-20">
+    <div className="w-full px-4 md:px-4  ">
       <h1 className="text-white font-bold pText my-4 text-center md:text-left">
         Education
       </h1>
       <div className="flex flex-col-reverse md:flex-row gap-4 items-center">
-        <div className="flex h-auto w-full md:w-1/2">
-          <div className="w-[2px] pColor h-auto flex justify-center">
+        <div className="flex h-auto w-full md:w-1/2 ">
+          <div className="w-[2px] pColor h-auto flex justify-center ">
             <p className="h-full "></p>
           </div>
-          <div className="w-[98%] flex flex-col gap-10">
+          <div className="w-[98%] flex flex-col gap-10 ">
             {educations.map((education: TEducation, idx: number) => (
               <TimeLine key={idx} education={education} />
             ))}

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const AllBlogPage = async () => {
-  const res = await fetch("http://localhost:5000/api/blog/", {
+  const res = await fetch(`${process.env.BASE_URL}/blog/`, {
     next: { tags: ["blogs"] },
   });
   const data = await res.json();

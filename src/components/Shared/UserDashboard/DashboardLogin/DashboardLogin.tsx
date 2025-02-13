@@ -1,5 +1,5 @@
 "use client";
-
+import "./DashboardLogin.css";
 import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 
@@ -19,7 +19,7 @@ const DashboardLogin = ({ user }: IProps) => {
   return (
     <div>
       {/* Download CV & Google Sign In */}
-      <div className="flex flex-col gap-4 items-center justify-center mt-6  w-full px-4">
+      <div className="flex flex-col gap-2 items-center justify-center mt-4  w-full px-4">
         <DownloadResume />
         {user === undefined ? (
           <button

@@ -8,6 +8,7 @@ import sendEmail from "@/utils/functions/sendEmail";
 import goCall from "@/utils/functions/goCall";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { LayoutDashboard } from "lucide-react";
 
 import {
   Home as HomeIcon,
@@ -154,6 +155,15 @@ const UserDashboard = ({ user }: IProps) => {
               <span className="u-line-effect">{label}</span>
             </Link>
           ))}
+          {user !== undefined && (
+            <Link
+              href={"/dashboard"}
+              className="flex gap-2 items-center cursor-pointer"
+            >
+              <LayoutDashboard className="opacity-50" />
+              <span>Dashboard</span>
+            </Link>
+          )}
         </div>
         <div className="z-40">
           <DashboardLogin user={user} />
@@ -182,7 +192,7 @@ const UserDashboard = ({ user }: IProps) => {
         </div>
 
         {/* Contact Information */}
-        <div className="pt-10 text-black text-[15px] z-10 text-center">
+        <div className="pt-4 text-black text-[15px] z-10 text-center">
           <p>
             <span className="font-bold">Email: </span>
             <span onClick={sendEmail}> suvrodeb.cse@gmail.com</span>
@@ -196,7 +206,7 @@ const UserDashboard = ({ user }: IProps) => {
         {/* Footer */}
         <div className="absolute h-[100px] w-full bottom-0 flex justify-center z-0">
           <h1 className="z-20 bottom-1 absolute text-white text-center">
-            Copyright © 2024 Suvrodeb <br /> All rights reserved.
+            Copyright © 2025 Suvrodeb <br /> All rights reserved.
           </h1>
           <div>
             <div className="waveHeader"></div>
