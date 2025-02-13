@@ -2,7 +2,13 @@
 import Link from "next/link";
 import React from "react";
 
-const ErrorPage = () => {
+interface IProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  error: any;
+  reset: () => void;
+}
+
+const ErrorPage = ({ error, reset }: IProps) => {
   return (
     <div className="flex h-screen w-full items-center justify-center bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700">
       <div className="text-center p-8 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 flex flex-col items-center">
@@ -29,10 +35,11 @@ const ErrorPage = () => {
         <p className="text-xl text-gray-200 mb-8">
           Something went wrong. Please try again later.
         </p>
+        <p>{error?.message}</p>
 
         {/* Retry Button */}
         <button
-          onClick={() => window.location.reload()}
+          onClick={() => reset()}
           className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all mb-4"
         >
           Retry
