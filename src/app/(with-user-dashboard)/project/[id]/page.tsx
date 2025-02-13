@@ -1,3 +1,4 @@
+import { TProject } from "@/utils/types/globalTypes";
 import Image from "next/image";
 import React from "react";
 
@@ -6,6 +7,21 @@ interface IProps {
     id: string;
   }>;
 }
+
+export async function generateMetadata({ params }: IProps) {
+  const id = (await params)?.id;
+  const res = await fetch(`${process.env.BASE_URL}/project/${id}`, {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  const project: TProject = data?.data;
+
+  return {
+    title: project?.name,
+    description: project?.descriptions,
+  };
+}
+
 const ProjectDetailPage = async ({ params }: IProps) => {
   const id = (await params)?.id;
   const res = await fetch(`${process.env.BASE_URL}/project/${id}`, {

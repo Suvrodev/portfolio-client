@@ -1,3 +1,4 @@
+import { TBlog } from "@/utils/types/globalTypes";
 import Image from "next/image";
 import React from "react";
 
@@ -7,13 +8,27 @@ interface IProps {
   }>;
 }
 
+export async function generateMetadata({ params }: IProps) {
+  const id = (await params)?.id;
+  const res = await fetch(`${process.env.BASE_URL}/blog/${id}`, {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  const blog: TBlog = data?.data;
+
+  return {
+    title: blog?.title,
+    description: blog?.content,
+  };
+}
+
 const BlogDetailPage = async ({ params }: IProps) => {
   const id = (await params)?.id;
   const res = await fetch(`${process.env.BASE_URL}/blog/${id}`, {
     cache: "no-store",
   });
   const data = await res.json();
-  const blog = data?.data;
+  const blog: TBlog = data?.data;
   //   console.log("Blog: ", blog);
 
   return (
