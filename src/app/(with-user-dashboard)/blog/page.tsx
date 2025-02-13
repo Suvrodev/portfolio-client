@@ -1,5 +1,11 @@
 import BlogCard from "@/components/Admin/Blog/BlogCard/BlogCard";
 import { TBlog } from "@/utils/types/globalTypes";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog Page | Suvrodeb",
+  description: "Welcome to Blog page",
+};
 
 const BlogPage = async () => {
   const res = await fetch(`${process.env.BASE_URL}/blog/`, {

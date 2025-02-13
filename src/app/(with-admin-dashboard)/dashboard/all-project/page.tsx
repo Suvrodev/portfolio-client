@@ -1,6 +1,12 @@
 import ProjectBox from "@/components/Project/ProjectBox/ProjectBox";
 import { TProject } from "@/utils/types/globalTypes";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "All Project | Suvrodeb",
+  description: "You can Show all Project and Can delete and Update Project",
+};
 
 const AllProjectPage = async () => {
   const res = await fetch("http://localhost:5000/api/project/", {

@@ -1,6 +1,12 @@
 import ProjectBox from "@/components/Project/ProjectBox/ProjectBox";
 import { TProject } from "@/utils/types/globalTypes";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Project | Suvrodeb",
+  description: "Welcome to Project page",
+};
 
 const ProjectPage = async () => {
   const res = await fetch(`${process.env.BASE_URL}/project/`, {

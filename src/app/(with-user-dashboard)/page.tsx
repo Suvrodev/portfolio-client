@@ -9,6 +9,12 @@ import Project from "@/components/Project/Project/Project";
 import Skill from "@/components/Skill/Skill";
 import SkillLoading from "@/components/Skill/SkillLoading/SkillLoading";
 import Testimonial from "@/components/Testimonial/Testimonial";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home | Suvrodeb",
+  description: "Welcome to Suvrodeb Portfolio",
+};
 
 export default function Home() {
   return (

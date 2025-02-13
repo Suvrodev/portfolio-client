@@ -3,8 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 interface IProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  error: any;
+  error: Error & { digest?: string };
   reset: () => void;
 }
 

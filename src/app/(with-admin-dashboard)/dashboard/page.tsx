@@ -1,6 +1,11 @@
 import { dashboardItems } from "@/utils/Array/dashboardItems";
+import { Metadata } from "next";
 
 import React from "react";
+export const metadata: Metadata = {
+  title: "Dashboard | Suvrodeb",
+  description: "Welcome to Dashboard Home page",
+};
 
 const icons = [
   // Dashboard Home
