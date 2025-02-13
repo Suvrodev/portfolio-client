@@ -5,7 +5,11 @@ import "./MobileHeader.css";
 import me from "@/assets/HeaderImage/myLogo.png";
 import Image from "next/image";
 import MobileHeaderOption from "./MobileHeaderOption/MobileHeaderOption";
-const MobileHeader = () => {
+import { Tuser } from "@/utils/types/globalTypes";
+interface IProps {
+  user: Tuser;
+}
+const MobileHeader = ({ user }: IProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -34,7 +38,7 @@ const MobileHeader = () => {
 
       {isOpen && (
         <div className="fixed z-20 bottom-0 left-0 w-full transition-all duration-700">
-          <MobileHeaderOption />
+          <MobileHeaderOption user={user} />
         </div>
       )}
     </div>

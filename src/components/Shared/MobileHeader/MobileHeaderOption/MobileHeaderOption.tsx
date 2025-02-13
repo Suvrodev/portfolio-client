@@ -11,8 +11,20 @@ import EmailIcon from "@mui/icons-material/Email";
 import { BookOpen, Globe } from "lucide-react";
 
 import Link from "next/link";
+import { Tuser } from "@/utils/types/globalTypes";
+import GoogleIcon from "@mui/icons-material/Google";
+import { LayoutDashboard, LogOut } from "lucide-react";
+import { signIn, signOut } from "next-auth/react";
 
-const MobileHeaderOption = () => {
+interface IProps {
+  user: Tuser;
+}
+
+const MobileHeaderOption = ({ user }: IProps) => {
+  const handleGoogleSignIn = () => {
+    console.log("Google");
+    signIn("google", { callbackUrl: "/dashboard" });
+  };
   return (
     <div className="bg-[#130f49] text-white py-5">
       <div className="flex gap-2 justify-around">
@@ -79,6 +91,29 @@ const MobileHeaderOption = () => {
           <EmailIcon className="mhI" />
           <p className="text-[10px]">Contact</p>
         </Link>
+        {user == undefined ? (
+          <div
+            className="flex flex-col justify-center items-center cursor-pointer"
+            onClick={() => handleGoogleSignIn()}
+          >
+            <GoogleIcon className="mhI" />
+            <p className="text-[10px]">Login</p>
+          </div>
+        ) : (
+          <div className="flex items-center gap-6">
+            <Link
+              href={"/dashboard"}
+              className="flex flex-col justify-center items-center cursor-pointer"
+            >
+              <LayoutDashboard className="mhI" />
+              <p className="text-[10px]">Dashboard</p>
+            </Link>
+            <div className="flex flex-col justify-center items-center cursor-pointer">
+              <LogOut className="mhI" onClick={() => signOut()} />
+              <p className="text-[10px]">Logout</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

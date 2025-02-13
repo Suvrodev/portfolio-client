@@ -22,7 +22,7 @@ const layout = async ({ children }: IProps) => {
       </div>
       <div className="w-full md:w-[80%] bg-[#1c2854] ">
         <div className="md:hidden sticky top-0 z-50">
-          <MobileHeader />
+          <MobileHeader user={user} />
         </div>
         <div>{children}</div>
         <div className="sticky top-0 bg-yellow-500">
