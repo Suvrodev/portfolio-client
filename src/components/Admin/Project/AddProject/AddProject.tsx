@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import addImage from "@/assets/AddImage/addImage.jpg";
+
 import { toast } from "sonner";
 import { sonarId } from "@/utils/sonarId";
 import axios from "axios";
@@ -12,7 +12,15 @@ const imageHostingUrl =
   "https://api.cloudinary.com/v1_1/dixfkupof/image/upload";
 
 import { useAddProjectMutation } from "@/redux/apis/ProjectManagement/projectManagement";
-import TextEditor from "../../TextEditor/TextEditor";
+// import TextEditor from "../../TextEditor/TextEditor";
+import dynamic from "next/dynamic";
+
+const TextEditor = dynamic(() => import("../../TextEditor/TextEditor"), {
+  ssr: false,
+});
+
+import addImage from "@/assets/AddImage/addImage.jpg";
+// const addImage = "/assets/addImage/addImage.jpg";
 
 const AddProject = () => {
   const [addProject] = useAddProjectMutation();

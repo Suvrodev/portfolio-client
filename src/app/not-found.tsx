@@ -1,7 +1,14 @@
-"use client";
-import notFoundLottie from "@/assets/lottie/notfound.json";
-import Lottie from "lottie-react";
+// "use client";
+// import notFoundLottie from "@/assets/lottie/notfound.json";
+
+// import Lottie from "lottie-react";
+import Image from "next/image";
 import Link from "next/link";
+
+// const notFoundLottie = "./assets/lottie/notfound.json";
+
+///Image Part
+import notFoundImage from "@/assets/notFound/notFound.jpg";
 
 const NotFoundPage = () => {
   return (
@@ -9,7 +16,13 @@ const NotFoundPage = () => {
       <div className="text-center p-8 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 flex flex-col items-center">
         {/* Lottie Animation */}
         <div className="w-72 h-72 mb-8">
-          <Lottie animationData={notFoundLottie} loop={true} />
+          {/* <Lottie animationData={notFoundLottie} loop={true} /> */}
+          <Image
+            src={notFoundImage}
+            alt="Not Found Image"
+            width={450}
+            height={350}
+          />
         </div>
 
         {/* 404 Text */}

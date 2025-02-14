@@ -2,7 +2,7 @@
 import "./UserDashboard.css";
 
 import { FaFacebookF, FaTwitter, FaWhatsapp } from "react-icons/fa";
-import logoImage from "@/assets/HeaderImage/myLogo.png";
+
 import goLink from "@/utils/functions/goLink";
 import sendEmail from "@/utils/functions/sendEmail";
 import goCall from "@/utils/functions/goCall";
@@ -23,6 +23,8 @@ import { Tuser } from "@/utils/types/globalTypes";
 interface IProps {
   user: Tuser;
 }
+
+const logoImage = "/assets/HeaderImage/myLogo.png";
 const UserDashboard = ({ user }: IProps) => {
   return (
     // <div className="sticky top-0 bg-yellow-400">
@@ -126,6 +128,7 @@ const UserDashboard = ({ user }: IProps) => {
           <div className="cursor-pointer z-10  flex justify-center items-center">
             <Image
               src={logoImage}
+              // src="/assets/HeaderImage/myLogo.png"
               alt="Suvrodeb"
               height={150}
               width={150}
@@ -142,7 +145,7 @@ const UserDashboard = ({ user }: IProps) => {
         <div className="flex flex-col gap-1 z-10">
           {[
             { label: "Home", Icon: HomeIcon, link: "/" },
-            { label: "Project", Icon: InfoIcon, link: "/project" },
+            { label: "Project", Icon: InfoIcon, link: "/projects" },
             { label: "Blog", Icon: RssFeedIcon, link: "/blog" },
             { label: "Contact", Icon: EmailIcon, link: "/contact" },
           ].map(({ label, Icon, link }) => (

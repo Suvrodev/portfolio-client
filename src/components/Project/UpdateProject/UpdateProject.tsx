@@ -16,8 +16,16 @@ import UpdateIcon from "@mui/icons-material/Update";
 import CreateIcon from "@mui/icons-material/Create";
 import { Modal } from "antd";
 import Image from "next/image";
-import TextEditor from "@/components/Admin/TextEditor/TextEditor";
 import { revalidateProjects } from "@/app/actions/revalidateProjects";
+import dynamic from "next/dynamic";
+
+// import TextEditor from "@/components/Admin/TextEditor/TextEditor";
+const TextEditor = dynamic(
+  () => import("@/components/Admin/TextEditor/TextEditor"),
+  {
+    ssr: false,
+  }
+);
 
 const imageHostingUrl =
   "https://api.cloudinary.com/v1_1/dixfkupof/image/upload";

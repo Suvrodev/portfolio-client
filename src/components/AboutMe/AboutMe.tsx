@@ -3,12 +3,12 @@ import { Typewriter } from "react-simple-typewriter";
 import "./AboutMe.css";
 
 // import firebaseImage from "../../../assets/AboutMe/Firebase.png";
-import firebaseImage from "@/assets/AboutMe/Firebase.png";
+// import firebaseImage from "@/assets/AboutMe/Firebase.png";
 import reactImage from "@/assets/AboutMe/react.png";
-import suvrodebImage1 from "@/assets/AboutMe/Suvrodeb_1.png";
+// import suvrodebImage1 from "@/assets/AboutMe/Suvrodeb_1.png";
 // import suvrodebImage2 from "@/assets/AboutMe/Suvrodeb_2.png";
-import tailwindImage from "@/assets/AboutMe/tailwind.png";
-import typescriptImage from "@/assets/AboutMe/ts.png";
+// import tailwindImage from "@/assets/AboutMe/tailwind.png";
+// import typescriptImage from "@/assets/AboutMe/ts.png";
 import Image from "next/image";
 
 const AboutMe = () => {
@@ -22,34 +22,41 @@ const AboutMe = () => {
       <div className="flex flex-col md:flex-row gap-16 md:gap-24  md:h-[577px] ">
         <div className="w-full md:w-1/2 flex items-center justify-center relative  ">
           <Image
-            src={suvrodebImage1}
+            // src={suvrodebImage1}
+            src="/me.png"
             alt="Suvrodeb Image"
+            width={1920}
+            height={1080}
             className=" flex items-center justify-center"
           />
 
           <Image
             src={reactImage}
+            // src="/assets/AboutMe/react.png"
             alt="React Image"
             width={60}
             height={60}
             className="w-[60x] h-[60px] rounded-md absolute top-0 md:top-[45px] left-[65px] md:left-[120px] abtAnim"
           />
           <Image
-            src={tailwindImage}
+            // src={tailwindImage}
+            src="/assets/AboutMe/tailwind.png"
             alt="Tailwind Image"
             width={60}
             height={60}
             className="w-[60x] h-[60px] rounded-md absolute top-10 md:top-[65px] right-[10px] md:right-[60px] abtAnim"
           />
           <Image
-            src={firebaseImage}
+            // src={firebaseImage.src}
+            src="/assets/AboutMe/Firebase.png"
             alt="Firebase Image"
             width={60}
             height={60}
             className="w-[60x] h-[60px] rounded-md absolute bottom-0 md:bottom-[45px] left-[65px] md:left-[120px] abtAnim"
           />
           <Image
-            src={typescriptImage}
+            // src={typescriptImage}
+            src="/assets/AboutMe/ts.png"
             alt="TS Image"
             width={60}
             height={60}

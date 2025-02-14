@@ -11,10 +11,12 @@ interface IProps {
   user: Tuser;
 }
 const DashboardLogin = ({ user }: IProps) => {
-  const handleGoogleSignIn = () => {
-    console.log("Google");
-    signIn("google", { callbackUrl: "/dashboard" });
-  };
+  // const handleGoogleSignIn = () => {
+  //   console.log("Google");
+  //   signIn("google", { callbackUrl: "/dashboard" });
+  // };
+
+  // console.log("User in Dashboard Login", user);
 
   return (
     <div>
@@ -23,7 +25,9 @@ const DashboardLogin = ({ user }: IProps) => {
         <DownloadResume />
         {user === undefined ? (
           <button
-            onClick={() => handleGoogleSignIn()}
+            // onClick={() => handleGoogleSignIn()}
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+            // onClick={() => signIn("google")}
             className="flex items-center gap-2 btn bg-yellow-400 text-white border-0 rounded-lg font-bold shadow-md hover:bg-yellow-500 transition duration-300"
           >
             <FaGoogle />

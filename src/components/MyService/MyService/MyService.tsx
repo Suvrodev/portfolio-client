@@ -16,7 +16,7 @@ const MyService = () => {
     fetchData();
   }, []);
 
-  console.log("Services: ", services);
+  // console.log("Services: ", services);
   return (
     <div>
       <h1 className="text-2xl font-bold pText mb-10">My Service</h1>

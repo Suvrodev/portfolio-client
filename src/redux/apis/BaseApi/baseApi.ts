@@ -12,7 +12,7 @@ import { toast } from "sonner";
 const baseQuery = fetchBaseQuery({
   // baseUrl: process.env.BASE_URL,
   // baseUrl: "http://localhost:5000/api",
-  baseUrl: "https://suvrodeb-portfolio.vercel.app/api",
+  baseUrl: "https://portfolio-server-sandy-delta.vercel.app/api",
 });
 
 const baseQueryWithRefreshToken: BaseQueryFn<

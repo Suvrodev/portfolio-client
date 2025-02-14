@@ -13,7 +13,7 @@ const DownloadResume = () => {
   const { data, isLoading } = useGetResumeQuery(undefined);
   const resumeArray = data?.data;
   const resume: TResume = resumeArray && resumeArray[0];
-  //   console.log("Resume in dashboard: ", resume);
+  // console.log("Resume in dashboard: ", resume);
   useEffect(() => {
     if (resume) {
       dispatch(setResumeData(resume));

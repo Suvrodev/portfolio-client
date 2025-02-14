@@ -16,9 +16,14 @@ import { sonarId } from "@/utils/sonarId";
 import axios from "axios";
 import Image from "next/image";
 import { blogCategories } from "@/utils/Array/blogCategories";
-import TextEditor from "../../TextEditor/TextEditor";
 import { useUpdateBlogMutation } from "@/redux/apis/BlogManagement/blogmanagement";
 import { revalidateProjects } from "@/app/actions/revalidateProjects";
+import dynamic from "next/dynamic";
+
+// import TextEditor from "../../TextEditor/TextEditor";
+const TextEditor = dynamic(() => import("../../TextEditor/TextEditor"), {
+  ssr: false,
+});
 
 const imageHostingUrl =
   "https://api.cloudinary.com/v1_1/dixfkupof/image/upload";

@@ -17,6 +17,7 @@ export const resumeSlice = createSlice({
   reducers: {
     setResumeData: (state, action) => {
       const getResume: TResume = action.payload;
+      console.log("get Resume: ", getResume);
       state.resume = getResume;
     },
   },

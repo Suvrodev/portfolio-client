@@ -11,7 +11,7 @@ const Project = async () => {
   // console.log("Projects: ", projects);
   return (
     <div>
-      <h1 className="text-2xl font-bold pText mb-10">Project</h1>
+      <h1 className="text-2xl font-bold pText mb-10">Projects</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {projects?.map((project: TProject, idx: number) => (
           <ProjectBox key={idx} project={project} />

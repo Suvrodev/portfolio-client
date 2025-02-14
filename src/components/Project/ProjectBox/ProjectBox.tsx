@@ -1,7 +1,7 @@
 "use client";
 import "./ProjectBox.css";
 
-import chromeImage from "@/assets/chrome/chrome.png";
+// import chromeImage from "@/assets/chrome/chrome.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
 import goLink from "@/utils/functions/goLink";
@@ -23,6 +23,7 @@ interface IProps {
   admin?: boolean;
 }
 
+const chromeImage = "/assets/chrome/chrome.png";
 const DynamicUpdateProject = dynamic(
   () => import("../UpdateProject/UpdateProject"),
   { ssr: false }

@@ -1,13 +1,15 @@
 "use client";
 import "./ProjectBox.css";
 
-import chromeImage from "@/assets/chrome/chrome.png";
+// import chromeImage from "@/assets/chrome/chrome.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
 import goLink from "@/utils/functions/goLink";
 import Image from "next/image";
 import { TProject } from "@/utils/types/globalTypes";
 import { usePathname, useRouter } from "next/navigation";
+
+const chromeImage = "/assets/chrome/chrome.png";
 
 interface IProps {
   project: TProject;

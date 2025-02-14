@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
 import "./MobileHeader.css";
-// import me from "../../../../assets/HeaderImage/myLogo.png";
-import me from "@/assets/HeaderImage/myLogo.png";
 import Image from "next/image";
 import MobileHeaderOption from "./MobileHeaderOption/MobileHeaderOption";
 import { Tuser } from "@/utils/types/globalTypes";
 interface IProps {
   user: Tuser;
 }
+
+const logoImage = "/assets/HeaderImage/myLogo.png";
 const MobileHeader = ({ user }: IProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,7 +19,7 @@ const MobileHeader = ({ user }: IProps) => {
   return (
     <div className=" w-full flex justify-between items-center py-2 px-5 bg-[#0F172A]  ">
       <Image
-        src={me}
+        src={logoImage}
         alt="Suvrodeb"
         width={50}
         height={50}

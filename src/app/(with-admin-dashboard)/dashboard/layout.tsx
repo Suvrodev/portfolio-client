@@ -17,7 +17,7 @@ const layout = async ({ children }: Iprops) => {
   const session = await getServerSession(authOptions);
   // console.log("Session from dashboard", session);
   const user = session?.user as Tuser;
-  console.log("user: ", user);
+  // console.log("user: ", user);
 
   return (
     <div>
@@ -32,7 +32,6 @@ const layout = async ({ children }: Iprops) => {
         <p className="w-[33%] text-white hidden md:block">Suvrodeb Portfolio</p>
         <div className="w-[33%] flex justify-center text-[12px] md:text-[16px] ">
           <p>{user?.email}</p>
-          <span>user role</span>
         </div>
       </div>
 

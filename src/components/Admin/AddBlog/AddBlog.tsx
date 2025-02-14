@@ -2,16 +2,26 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import "./AddBlog.css";
 
-import addImage from "@/assets/AddImage/addImage.jpg";
+// import addImage from "@/assets/AddImage/addImage.jpg";
 import { toast } from "sonner";
 import { sonarId } from "@/utils/sonarId";
 import axios from "axios";
 import CreateIcon from "@mui/icons-material/Create";
 import { blogCategories } from "@/utils/Array/blogCategories";
 import Image from "next/image";
-import TextEditor from "../TextEditor/TextEditor";
-import { useAddblogMutation } from "@/redux/apis/BlogManagement/blogmanagement";
 
+import { useAddblogMutation } from "@/redux/apis/BlogManagement/blogmanagement";
+import dynamic from "next/dynamic";
+// import TextEditor from "../TextEditor/TextEditor";
+
+const TextEditor = dynamic(() => import("../TextEditor/TextEditor"), {
+  ssr: false,
+});
+
+// const checkAddImage="/public/assets/addImage/addImage.jpg"
+//এভাবে নিলে vercel এ deploy করার পরে Image show করে না
+// const addImage = "/assets/addImage/addImage.jpg"
+import addImage from "@/assets/AddImage/addImage.jpg";
 const imageHostingUrl =
   "https://api.cloudinary.com/v1_1/dixfkupof/image/upload";
 

@@ -19,7 +19,7 @@ const AllProjectPage = async () => {
 
   return (
     <div>
-      <h1>All Project page</h1>
+      <h1 className="text-xl text-white my-4 font-bold">All Project</h1>
       <div className="min-h-screen bg-gray-100 p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {projects?.map((project: TProject, idx: number) => (

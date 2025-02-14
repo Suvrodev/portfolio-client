@@ -1,5 +1,6 @@
 import { TBlog } from "@/utils/types/globalTypes";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface IProps {
@@ -74,12 +75,12 @@ const BlogDetailPage = async ({ params }: IProps) => {
 
         {/* Back to Blogs Button */}
         <div className="mt-12 text-center animate-bounce">
-          <a
-            href="/blogs"
+          <Link
+            href="/blog"
             className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:from-pink-600 hover:to-purple-700 transition-all transform hover:scale-110"
           >
             <span className="mr-2">←</span> Back to Blogs
-          </a>
+          </Link>
         </div>
       </div>
     </div>
