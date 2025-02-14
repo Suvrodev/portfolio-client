@@ -85,7 +85,6 @@ const ProjectBox = ({ project, admin = false }: IProps) => {
       data-aos="flip-left"
       data-aos-anchor-placement="top-bottom"
       className="relative rounded-md p-2 border-[2px] projectBoxBG"
-      onClick={() => handleGoProjectDetail(_id)}
     >
       {admin && (
         <div className="absolute top-3 right-3 flex gap-2 z-10">
@@ -108,6 +107,7 @@ const ProjectBox = ({ project, admin = false }: IProps) => {
             width={250}
             height={150}
             className="absolute top-0 w-full transition-transform duration-[1500ms] ease-linear hover:-translate-y-[50%]"
+            onClick={() => handleGoProjectDetail(_id)}
           />
         </div>
         <div className="w-full flex flex-col items-center justify-center">

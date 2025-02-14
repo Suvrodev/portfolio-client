@@ -26,7 +26,7 @@ const AboutMe = () => {
             src="/me.png"
             alt="Suvrodeb Image"
             width={1920}
-            height={1080}
+            height={700}
             className=" flex items-center justify-center"
           />
 
