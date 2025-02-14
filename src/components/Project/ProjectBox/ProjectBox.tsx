@@ -73,11 +73,11 @@ const ProjectBox = ({ project, admin = false }: IProps) => {
   };
 
   const handleGoProjectDetail = (_id: string) => {
-    if (path != "/project") {
+    if (path != "/projects") {
       console.log("in admin or Home");
       return;
     }
-    router.push(`/project/${_id}`);
+    router.push(`/projects/${_id}`);
   };
 
   return (
