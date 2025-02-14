@@ -71,11 +71,11 @@ const MobileHeaderOption = ({ user }: IProps) => {
           <p className="text-[10px]">Home</p>
         </Link>
         <Link
-          href={"/project"}
+          href={"/projects"}
           className="flex flex-col justify-center items-center cursor-pointer"
         >
           <Globe className="mhI" />
-          <p className="text-[10px]">Project</p>
+          <p className="text-[10px]">Projects</p>
         </Link>
         <Link
           href={"/blog"}

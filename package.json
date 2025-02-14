@@ -17,6 +17,7 @@
     "@smastrom/react-rating": "^1.5.0",
     "@tinymce/tinymce-react": "^5.1.1",
     "antd": "^5.23.4",
+    "aos": "^2.3.4",
     "axios": "^1.7.9",
     "framer-motion": "^12.4.2",
     "jodit": "^4.5.4",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

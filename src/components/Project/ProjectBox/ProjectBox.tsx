@@ -28,6 +28,8 @@ const DynamicUpdateProject = dynamic(
   () => import("../UpdateProject/UpdateProject"),
   { ssr: false }
 );
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ProjectBox = ({ project, admin = false }: IProps) => {
   const [deleteProject] = useDeleteProjectMutation();
@@ -36,6 +38,14 @@ const ProjectBox = ({ project, admin = false }: IProps) => {
   const path = usePathname();
   const router = useRouter();
 
+  //For AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
+
+  //For Error
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -72,6 +82,8 @@ const ProjectBox = ({ project, admin = false }: IProps) => {
 
   return (
     <div
+      data-aos="flip-left"
+      data-aos-anchor-placement="top-bottom"
       className="relative rounded-md p-2 border-[2px] projectBoxBG"
       onClick={() => handleGoProjectDetail(_id)}
     >

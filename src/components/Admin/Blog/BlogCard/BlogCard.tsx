@@ -12,6 +12,9 @@ import { revalidateProjects } from "@/app/actions/revalidateProjects";
 import { formatDate } from "@/utils/functions/formatDate";
 import { usePathname, useRouter } from "next/navigation";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 interface IProps {
   blog: TBlog;
   admin?: boolean;
@@ -24,6 +27,13 @@ const BlogCard = ({ blog, admin = false }: IProps) => {
   const router = useRouter();
 
   const [trimmedTitle, setTrimmedTitle] = useState("");
+
+  //For AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
 
   useEffect(() => {
     const result = title.length > 50 ? title.substring(0, 50) + "..." : title;
@@ -55,6 +65,8 @@ const BlogCard = ({ blog, admin = false }: IProps) => {
 
   return (
     <div
+      data-aos="flip-right"
+      data-aos-anchor-placement="top-bottom"
       className="relative bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
       onClick={() => handleGoBlogDetail(_id)}
     >

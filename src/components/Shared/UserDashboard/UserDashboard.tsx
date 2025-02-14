@@ -145,7 +145,7 @@ const UserDashboard = ({ user }: IProps) => {
         <div className="flex flex-col gap-1 z-10">
           {[
             { label: "Home", Icon: HomeIcon, link: "/" },
-            { label: "Project", Icon: InfoIcon, link: "/projects" },
+            { label: "Projects", Icon: InfoIcon, link: "/projects" },
             { label: "Blog", Icon: RssFeedIcon, link: "/blog" },
             { label: "Contact", Icon: EmailIcon, link: "/contact" },
           ].map(({ label, Icon, link }) => (

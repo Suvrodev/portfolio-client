@@ -9,6 +9,9 @@ import Image from "next/image";
 import { TProject } from "@/utils/types/globalTypes";
 import { usePathname, useRouter } from "next/navigation";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const chromeImage = "/assets/chrome/chrome.png";
 
 interface IProps {
@@ -20,6 +23,13 @@ const ProjectBox = ({ project }: IProps) => {
   const path = usePathname();
   const router = useRouter();
   // console.log("Path: ", path);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
+
   const handleGoProjectDetail = (_id: string) => {
     if (path != "/project") {
       return;
@@ -28,6 +38,8 @@ const ProjectBox = ({ project }: IProps) => {
   };
   return (
     <div
+      data-aos="flip-left"
+      data-aos-anchor-placement="top-bottom"
       className="rounded-md p-2 border-[2px] projectBoxBG"
       onClick={() => handleGoProjectDetail(_id)}
     >
